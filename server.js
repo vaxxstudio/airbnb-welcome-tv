@@ -158,6 +158,9 @@ const DEFAULT_DATA = {
     }
   ],
   "bookings": [],
+  "security": {
+    "pin": "8899"
+  },
   "tvs": [
     {
       "id": "living-room",
@@ -390,12 +393,20 @@ const server = http.createServer((req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Host-PIN');
 
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
     res.end();
     return;
+  }
+
+  function verifyHostPin() {
+    const configuredPin = (appState.security && appState.security.pin) ? String(appState.security.pin) : '8899';
+    const headerPin = req.headers['x-host-pin'];
+    const queryPin = parsedUrl.searchParams.get('pin');
+    const provided = (headerPin || queryPin || '').toString().trim();
+    return provided === configuredPin;
   }
 
   // 1. GET Current State
@@ -405,8 +416,37 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // 2. POST Update State
+  // 1b. POST Verify Host PIN
+  if (pathname === '/api/auth/verify' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body || '{}');
+        const configuredPin = (appState.security && appState.security.pin) ? String(appState.security.pin) : '8899';
+        const enteredPin = (payload.pin || '').toString().trim();
+        if (enteredPin === configuredPin) {
+          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ success: true, verified: true }));
+        } else {
+          res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ success: false, error: 'Incorrect Host PIN' }));
+        }
+      } catch (e) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
+      }
+    });
+    return;
+  }
+
+  // 2. POST Update State (PIN Protected)
   if (pathname === '/api/data' && req.method === 'POST') {
+    if (!verifyHostPin()) {
+      res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: 'Unauthorized: Invalid or missing Host PIN' }));
+      return;
+    }
     let body = '';
     req.on('data', chunk => { body += chunk; });
     req.on('end', () => {
@@ -423,8 +463,13 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // 2b. POST Upload Image (Base64 JSON)
+  // 2b. POST Upload Image (Base64 JSON, PIN Protected)
   if (pathname === '/api/upload' && req.method === 'POST') {
+    if (!verifyHostPin()) {
+      res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: 'Unauthorized: Invalid or missing Host PIN' }));
+      return;
+    }
     let body = '';
     req.on('data', chunk => {
       body += chunk;
@@ -536,8 +581,13 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // 6. Reset Demo Template
+  // 6. Reset Demo Template (PIN Protected)
   if (pathname === '/api/reset' && req.method === 'POST') {
+    if (!verifyHostPin()) {
+      res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: 'Unauthorized: Invalid or missing Host PIN' }));
+      return;
+    }
     appState = JSON.parse(JSON.stringify(DEFAULT_DATA));
     saveData(appState);
     broadcastUpdate(appState);
@@ -546,9 +596,9 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Static files
+  // Static files & Host aliases
   let filePath = pathname === '/' ? '/index.html' : pathname;
-  if (filePath === '/dashboard') filePath = '/dashboard.html';
+  if (filePath === '/dashboard' || filePath === '/host' || filePath === '/admin') filePath = '/dashboard.html';
   if (filePath === '/tv') filePath = '/index.html';
 
   const fullPath = path.join(__dirname, filePath);

@@ -5,11 +5,52 @@
 
 let state = null;
 let currentPalette = 'apple_gold';
+let currentHostPin = sessionStorage.getItem('host_pin') || '';
 
 document.addEventListener('DOMContentLoaded', () => {
+  verifyPinOnLoad();
   initDashboard();
   setupEventListeners();
+  setupSecurityListeners();
 });
+
+async function verifyPinOnLoad() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryPin = urlParams.get('pin');
+  if (queryPin) {
+    currentHostPin = queryPin.trim();
+    sessionStorage.setItem('host_pin', currentHostPin);
+  }
+
+  const overlay = document.getElementById('pinLockOverlay');
+  const errorMsg = document.getElementById('pinErrorMsg');
+  const unlockInput = document.getElementById('unlockPinInput');
+
+  if (!currentHostPin) {
+    if (overlay) overlay.classList.remove('hidden');
+    if (unlockInput) setTimeout(() => unlockInput.focus(), 150);
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/auth/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin: currentHostPin })
+    });
+    if (res.ok) {
+      if (overlay) overlay.classList.add('hidden');
+    } else {
+      sessionStorage.removeItem('host_pin');
+      currentHostPin = '';
+      if (overlay) overlay.classList.remove('hidden');
+      if (errorMsg) errorMsg.textContent = 'Session locked. Please enter your PIN.';
+      if (unlockInput) setTimeout(() => unlockInput.focus(), 150);
+    }
+  } catch (e) {
+    if (overlay) overlay.classList.add('hidden');
+  }
+}
 
 async function initDashboard() {
   updateDisplayUrls();
@@ -44,6 +85,17 @@ function updateDisplayUrls() {
       showToast('TV Web Address copied to clipboard!');
     });
   }
+
+  updateDirectHostLink();
+}
+
+function updateDirectHostLink(pin) {
+  const host = window.location.host;
+  const protocol = window.location.protocol;
+  const usePin = pin || (state?.security?.pin) || currentHostPin || '8899';
+  const directUrl = `${protocol}//${host}/dashboard?pin=${usePin}`;
+  const inputEl = document.getElementById('inputDirectHostUrl');
+  if (inputEl) inputEl.value = directUrl;
 }
 
 function populateForm(data) {
@@ -53,6 +105,11 @@ function populateForm(data) {
   const guest = data.guest || {};
   const wifi = data.wifi || {};
   const photos = prop.photos || {};
+
+  // Security & Host PIN
+  const pin = data.security?.pin || '8899';
+  setValue('inputHostPin', pin);
+  updateDirectHostLink(pin);
 
   // 1. Guest & Screen Mode
   setValue('selectOverrideMode', guest.overrideMode || 'welcome');
@@ -472,6 +529,9 @@ function collectFormData() {
     },
     calendars,
     bookings: state?.bookings || [],
+    security: {
+      pin: getValue('inputHostPin') || state?.security?.pin || '8899'
+    },
     tvs: state?.tvs || []
   };
 }
@@ -650,11 +710,17 @@ function setupEventListeners() {
   // Reset demo
   document.getElementById('btnResetDefault')?.addEventListener('click', async () => {
     if (!confirm('Reset all values to luxury Airbnb demo template?')) return;
+    const pinToSend = currentHostPin || getValue('inputHostPin') || state?.security?.pin || '8899';
     try {
-      const res = await fetch('/api/reset', { method: 'POST' });
+      const res = await fetch('/api/reset', {
+        method: 'POST',
+        headers: { 'X-Host-PIN': pinToSend }
+      });
       if (res.ok) {
         initDashboard();
         showToast('Reset to demo template!');
+      } else if (res.status === 401) {
+        showToast('⚠️ PIN required to reset.');
       }
     } catch (e) {
       showToast('Reset completed.');
@@ -673,12 +739,28 @@ async function pushLiveUpdate(silent = false) {
     bc.postMessage(payload);
   }
 
+  const pinToSend = currentHostPin || getValue('inputHostPin') || state?.security?.pin || '8899';
+
   try {
     const res = await fetch('/api/data', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Host-PIN': pinToSend
+      },
       body: JSON.stringify(payload)
     });
+
+    if (res.status === 401) {
+      sessionStorage.removeItem('host_pin');
+      currentHostPin = '';
+      const overlay = document.getElementById('pinLockOverlay');
+      if (overlay) overlay.classList.remove('hidden');
+      const errEl = document.getElementById('pinErrorMsg');
+      if (errEl) errEl.textContent = 'Unauthorized. Please enter your Host PIN to save.';
+      return;
+    }
+
     if (res.ok && !silent) {
       showToast('✨ Pushed live to connected TVs!');
     }
@@ -765,9 +847,13 @@ function setupImageUploader(btnId, fileInputId, textInputId, previewBoxId, thumb
 
     try {
       const base64Data = await readFileAsDataURL(file);
+      const pinToSend = currentHostPin || getValue('inputHostPin') || state?.security?.pin || '8899';
       const res = await fetch('/api/upload', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Host-PIN': pinToSend
+        },
         body: JSON.stringify({
           filename: file.name,
           data: base64Data
@@ -868,9 +954,13 @@ function setupWallpaperUpload() {
 
     try {
       const base64Data = await readFileAsDataURL(file);
+      const pinToSend = currentHostPin || getValue('inputHostPin') || state?.security?.pin || '8899';
       const res = await fetch('/api/upload', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Host-PIN': pinToSend
+        },
         body: JSON.stringify({
           filename: file.name,
           data: base64Data
@@ -1304,3 +1394,125 @@ window.applyReservationToStay = function(idx) {
   showToast(`Loaded reservation onto TV: ${formatFriendlyDate(calCheckIn)} → ${formatFriendlyDate(calCheckOut)}`);
   pushLiveUpdate(false);
 };
+
+// -------------------------------------------------------------
+// Security & Host PIN Handlers
+// -------------------------------------------------------------
+function setupSecurityListeners() {
+  const overlay = document.getElementById('pinLockOverlay');
+  const errorMsg = document.getElementById('pinErrorMsg');
+  const unlockInput = document.getElementById('unlockPinInput');
+  const unlockForm = document.getElementById('pinUnlockForm');
+  const btnLock = document.getElementById('btnLockStudio');
+  const btnSavePin = document.getElementById('btnSavePin');
+  const btnTogglePin = document.getElementById('btnTogglePinVisibility');
+  const btnCopyDirect = document.getElementById('btnCopyDirectHostUrl');
+
+  if (unlockForm) {
+    unlockForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = unlockInput?.value || '';
+      unlockStudioWithPin(val);
+    });
+  }
+
+  if (btnLock) {
+    btnLock.addEventListener('click', () => {
+      sessionStorage.removeItem('host_pin');
+      currentHostPin = '';
+      if (unlockInput) unlockInput.value = '';
+      if (errorMsg) errorMsg.textContent = '';
+      if (overlay) overlay.classList.remove('hidden');
+      setTimeout(() => unlockInput?.focus(), 150);
+      showToast('🔒 Host Studio locked.');
+    });
+  }
+
+  if (btnTogglePin) {
+    btnTogglePin.addEventListener('click', () => {
+      const input = document.getElementById('inputHostPin');
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btnTogglePin.textContent = 'Hide';
+      } else {
+        input.type = 'password';
+        btnTogglePin.textContent = 'Show';
+      }
+    });
+  }
+
+  if (btnSavePin) {
+    btnSavePin.addEventListener('click', async () => {
+      const pinInput = document.getElementById('inputHostPin');
+      const newPin = (pinInput?.value || '').trim();
+      if (!newPin || newPin.length < 4) {
+        showToast('PIN must be at least 4 digits');
+        return;
+      }
+      currentHostPin = newPin;
+      sessionStorage.setItem('host_pin', newPin);
+      updateDirectHostLink(newPin);
+      await pushLiveUpdate(false);
+      showToast(`🔐 PIN updated successfully to: ${newPin}`);
+    });
+  }
+
+  if (btnCopyDirect) {
+    btnCopyDirect.addEventListener('click', () => {
+      const directInput = document.getElementById('inputDirectHostUrl');
+      if (directInput && directInput.value) {
+        navigator.clipboard.writeText(directInput.value);
+        showToast('Secret Direct Link copied to clipboard!');
+      }
+    });
+  }
+}
+
+async function unlockStudioWithPin(enteredPin) {
+  const overlay = document.getElementById('pinLockOverlay');
+  const errorMsg = document.getElementById('pinErrorMsg');
+  const unlockBtn = document.getElementById('btnUnlockStudio');
+  const unlockInput = document.getElementById('unlockPinInput');
+
+  if (!enteredPin || enteredPin.trim().length === 0) {
+    if (errorMsg) errorMsg.textContent = 'Please enter your 4-digit PIN.';
+    return;
+  }
+
+  if (unlockBtn) {
+    unlockBtn.disabled = true;
+    unlockBtn.textContent = 'Verifying...';
+  }
+
+  try {
+    const res = await fetch('/api/auth/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin: enteredPin.trim() })
+    });
+    const data = await res.json();
+    if (res.ok && data.success) {
+      currentHostPin = enteredPin.trim();
+      sessionStorage.setItem('host_pin', currentHostPin);
+      if (overlay) overlay.classList.add('hidden');
+      if (errorMsg) errorMsg.textContent = '';
+      setValue('inputHostPin', currentHostPin);
+      updateDirectHostLink(currentHostPin);
+      showToast('✨ Studio unlocked!');
+    } else {
+      if (errorMsg) errorMsg.textContent = 'Incorrect PIN. Try default: 8899';
+      if (unlockInput) {
+        unlockInput.value = '';
+        unlockInput.focus();
+      }
+    }
+  } catch (err) {
+    if (errorMsg) errorMsg.textContent = 'Error connecting to server.';
+  } finally {
+    if (unlockBtn) {
+      unlockBtn.disabled = false;
+      unlockBtn.textContent = 'Unlock Studio';
+    }
+  }
+}

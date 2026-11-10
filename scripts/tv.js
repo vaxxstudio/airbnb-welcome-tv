@@ -177,13 +177,6 @@ function setupCardsAndAmenities() {
       toggleCheckoutMode();
     });
   }
-
-  const btnDash = document.getElementById('btnDashboardLink');
-  if (btnDash) {
-    btnDash.addEventListener('click', () => {
-      window.open('/dashboard', '_blank');
-    });
-  }
 }
 
 function toggleTheme() {
@@ -620,12 +613,6 @@ function setupDpadNavigation() {
     // Hotkey 'C': Toggle Checkout Mode
     if (e.key === 'c' || e.key === 'C') {
       toggleCheckoutMode();
-      return;
-    }
-
-    // Hotkey 'D': Host Dashboard
-    if (e.key === 'd' || e.key === 'D') {
-      window.open('/dashboard', '_blank');
       return;
     }
   });
