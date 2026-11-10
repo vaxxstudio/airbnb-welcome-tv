@@ -2,10 +2,10 @@
   "property": {
     "name": "The Zenest",
     "location": "Thekkady",
-    "metaSubtitle": "1BHK · 300 MBPS WI-FI · GURUGRAM",
+    "metaSubtitle": "1BHK · 300 MBPS WI-FI · THEKKADY",
     "hostName": "Gautham",
     "hostContact": "Message Gautham on the Airbnb app",
-    "logoUrl": "",
+    "logoUrl": "assets/uploads/APOV__6__1794318134361.png",
     "logoPosition": "header",
     "logoSize": "medium",
     "colorPalette": "apple_gold",
@@ -32,7 +32,7 @@
     "stayNights": "1 night",
     "checkoutTime": "Thu 8 Nov, 11:00 AM",
     "welcomeNote": "Make yourself at home. If you need anything, message me on Airbnb.",
-    "hostSignoff": "– Wasim",
+    "hostSignoff": "– Gautham",
     "overrideMode": "welcome"
   },
   "wifi": {
@@ -134,7 +134,7 @@
       "name": "Airbnb",
       "type": "airbnb",
       "url": "https://www.airbnb.co.in/calendar/ical/1608518019172162450.ics?t=d0c9317592234ce0baf9bf0a136d0a49",
-      "lastSynced": "2026-11-10T17:50:45.276Z",
+      "lastSynced": "2026-11-10T18:20:45.351Z",
       "status": "active"
     },
     {
@@ -142,7 +142,7 @@
       "name": "Booking.com",
       "type": "booking",
       "url": "https://ical.booking.com/v1/export?t=cd2f7888-34fa-410a-b06b-c11bc831d79c",
-      "lastSynced": "2026-11-10T17:50:45.809Z",
+      "lastSynced": "2026-11-10T18:20:46.050Z",
       "status": "active"
     },
     {
@@ -150,7 +150,7 @@
       "name": "MakeMyTrip / Goibibo",
       "type": "mmt",
       "url": "https://ingo-content-clientbackend.goibibo.com/public/ecs/downloadCalendar/45002010708?bid=b57f0e8adcad2f049b7b94f5fb70bb42&otherBrandName=zen",
-      "lastSynced": "2026-11-10T17:50:46.290Z",
+      "lastSynced": "2026-11-10T18:20:46.267Z",
       "status": "active"
     }
   ],
@@ -164,7 +164,7 @@
       "source": "Airbnb"
     },
     {
-      "id": "808a0954-3bd2-43ea-9315-8a1ac78018bf",
+      "id": "356f080e-861c-4094-93ce-474ba322eb8c",
       "guestName": "Ingoibibo",
       "start": "2026-11-11T15:00:00.000Z",
       "end": "2026-11-12T15:00:00.000Z",
@@ -180,7 +180,7 @@
       "source": "Airbnb"
     },
     {
-      "id": "7b551881-e662-4d94-95c8-9e6c47d55110",
+      "id": "4996b0bf-7ce7-4588-baf8-975b0b9ac91f",
       "guestName": "Ingoibibo",
       "start": "2026-11-12T15:00:00.000Z",
       "end": "2026-11-13T15:00:00.000Z",
@@ -188,7 +188,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "4766abb0-5499-4ef3-a2c1-b6715a70bd2e",
+      "id": "3d2afd10-8ae0-4572-933f-060adf9c07c0",
       "guestName": "Ingoibibo",
       "start": "2026-11-13T15:00:00.000Z",
       "end": "2026-11-14T15:00:00.000Z",
@@ -308,7 +308,7 @@
       "source": "Airbnb"
     },
     {
-      "id": "bbd172bb-e636-4128-979f-3087e980febf",
+      "id": "3f955e69-8bfb-4e66-ab67-60cf462292b0",
       "guestName": "Ingoibibo",
       "start": "2026-12-21T15:00:00.000Z",
       "end": "2026-12-22T15:00:00.000Z",
@@ -316,7 +316,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "a3855c7e-4693-4694-b21d-00763ee66fff",
+      "id": "a2a4db15-9921-4bf9-90e0-c31a019b598f",
       "guestName": "Ingoibibo",
       "start": "2026-12-22T15:00:00.000Z",
       "end": "2026-12-23T15:00:00.000Z",
@@ -324,7 +324,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "56060994-0ad3-4ffc-9676-0931836b5a6a",
+      "id": "848a4ad5-6647-4a0f-9941-16ba4ae748d8",
       "guestName": "Ingoibibo",
       "start": "2026-12-23T15:00:00.000Z",
       "end": "2026-12-24T15:00:00.000Z",
@@ -332,7 +332,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "6113a6d3-f116-467e-b440-7b45c1acb5a1",
+      "id": "94a291c0-5e11-4c94-ac3d-ef3ab3444693",
       "guestName": "Ingoibibo",
       "start": "2026-12-24T15:00:00.000Z",
       "end": "2026-12-25T15:00:00.000Z",
@@ -340,7 +340,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "39413207-8c70-4a99-8000-6a6b7dd0b8ba",
+      "id": "daeb2b88-15e8-4eba-9860-fe9ff75d95ab",
       "guestName": "Ingoibibo",
       "start": "2026-12-25T15:00:00.000Z",
       "end": "2026-12-26T15:00:00.000Z",
@@ -348,7 +348,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "eaa99f0f-816f-4433-8d56-99339ea11f8d",
+      "id": "19ad43b9-d9e3-4d1a-a956-b17f622fdb8b",
       "guestName": "Ingoibibo",
       "start": "2026-12-26T15:00:00.000Z",
       "end": "2026-12-27T15:00:00.000Z",
@@ -356,7 +356,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "aa848065-4062-44ed-862d-30ffa511b9a9",
+      "id": "65ac5b9e-c5d9-4d22-907a-64897677fc99",
       "guestName": "Ingoibibo",
       "start": "2026-12-27T15:00:00.000Z",
       "end": "2026-12-28T15:00:00.000Z",
@@ -364,7 +364,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "d78e243e-34ac-407c-9b38-b6682d903268",
+      "id": "d00e4094-bdaa-438b-922f-3b20e5e830a0",
       "guestName": "Ingoibibo",
       "start": "2026-12-28T15:00:00.000Z",
       "end": "2026-12-29T15:00:00.000Z",
@@ -372,7 +372,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "13c3e42c-dac1-4927-8eb9-f29e10efcb5a",
+      "id": "bee003e2-02db-4eb3-878d-b2b6f1dc55e1",
       "guestName": "Ingoibibo",
       "start": "2026-12-29T15:00:00.000Z",
       "end": "2026-12-30T15:00:00.000Z",
@@ -380,7 +380,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "47c8c033-8fc5-4251-8541-a8b574b25bee",
+      "id": "99448db4-75f3-4925-be5e-1f1e534fedd5",
       "guestName": "Ingoibibo",
       "start": "2026-12-30T15:00:00.000Z",
       "end": "2026-12-31T15:00:00.000Z",
@@ -388,7 +388,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "990f7337-327c-40d6-97d7-f61909ae3cd7",
+      "id": "7b2c4d28-1df9-427f-a8ab-85ccc734b60d",
       "guestName": "Ingoibibo",
       "start": "2026-12-31T15:00:00.000Z",
       "end": "2027-01-01T15:00:00.000Z",
@@ -396,7 +396,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "886477c4-b2f6-4bbf-90db-9fcc2321e56f",
+      "id": "52e64dfc-89cd-4ba5-b4d2-c670b246acf5",
       "guestName": "Ingoibibo",
       "start": "2027-01-01T15:00:00.000Z",
       "end": "2027-01-02T15:00:00.000Z",
@@ -404,7 +404,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "e4a64507-434f-4169-aeb4-9fda225ea922",
+      "id": "40c9c9f3-d532-450b-a105-9fbe19dc6b2a",
       "guestName": "Ingoibibo",
       "start": "2027-01-02T15:00:00.000Z",
       "end": "2027-01-03T15:00:00.000Z",
@@ -412,7 +412,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "2d4fb3a7-e783-4787-b3ae-584dda6063a9",
+      "id": "19096952-76a5-42ae-a757-41801cd121e2",
       "guestName": "Ingoibibo",
       "start": "2027-01-03T15:00:00.000Z",
       "end": "2027-01-04T15:00:00.000Z",
@@ -420,7 +420,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "a10af5ce-22ec-40a6-85b7-b3e68c9dadfd",
+      "id": "03b60209-cdb8-4733-a1fb-8613b54e768e",
       "guestName": "Ingoibibo",
       "start": "2027-01-04T15:00:00.000Z",
       "end": "2027-01-05T15:00:00.000Z",
@@ -428,7 +428,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "79016186-8a82-4cf7-abd5-03ad85bcd07f",
+      "id": "6dfadcb6-9842-4d48-a690-812a88ea6fea",
       "guestName": "Ingoibibo",
       "start": "2027-01-05T15:00:00.000Z",
       "end": "2027-01-06T15:00:00.000Z",
@@ -436,7 +436,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "be82faa2-f6b0-4b9b-bdfa-4813543637a4",
+      "id": "c457ae5a-b92f-46a0-9eb2-b0d4de719a71",
       "guestName": "Ingoibibo",
       "start": "2027-01-06T15:00:00.000Z",
       "end": "2027-01-07T15:00:00.000Z",
@@ -444,7 +444,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "72fde51f-b8fc-460b-9ce1-f1b67d7ca311",
+      "id": "47e827fa-6a91-4d22-802c-16ce7f776b16",
       "guestName": "Ingoibibo",
       "start": "2027-01-07T15:00:00.000Z",
       "end": "2027-01-08T15:00:00.000Z",
@@ -452,7 +452,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "00d95d15-bdc4-4e0e-bc51-0dd7e8edf31a",
+      "id": "7dae03ce-b281-4472-a463-bc3807156df7",
       "guestName": "Ingoibibo",
       "start": "2027-01-08T15:00:00.000Z",
       "end": "2027-01-09T15:00:00.000Z",
@@ -460,7 +460,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "dc49ec51-154c-4008-9aa1-dcf490b3591a",
+      "id": "fba2e4bf-d17c-418a-905f-a4d8c0e1c84d",
       "guestName": "Ingoibibo",
       "start": "2027-01-09T15:00:00.000Z",
       "end": "2027-01-10T15:00:00.000Z",
@@ -468,7 +468,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "d8cf9472-31ba-4e87-929e-7cd00f6163c4",
+      "id": "5dbcc90c-e179-4adc-95aa-64b93caeb8b5",
       "guestName": "Ingoibibo",
       "start": "2027-01-10T15:00:00.000Z",
       "end": "2027-01-11T15:00:00.000Z",
@@ -476,7 +476,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "2f181596-beeb-47cd-b18d-747a70a5ec47",
+      "id": "13861160-7185-4e32-8a07-9d4166d180f7",
       "guestName": "Ingoibibo",
       "start": "2027-01-11T15:00:00.000Z",
       "end": "2027-01-12T15:00:00.000Z",
@@ -484,7 +484,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "1158d191-609f-4489-8356-fd777d0613eb",
+      "id": "afe7db54-3508-4b9c-92c1-dea78414d1a0",
       "guestName": "Ingoibibo",
       "start": "2027-01-12T15:00:00.000Z",
       "end": "2027-01-13T15:00:00.000Z",
@@ -492,7 +492,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "0fc2c8f7-bf7b-43e3-ab1f-b4cb7b52e3c2",
+      "id": "07851747-f5fb-40ef-bc2e-6f6796057bf6",
       "guestName": "Ingoibibo",
       "start": "2027-01-13T15:00:00.000Z",
       "end": "2027-01-14T15:00:00.000Z",
@@ -500,7 +500,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "a732007c-5769-4a91-9920-c6d0e2bfec52",
+      "id": "ee2a9480-0368-4e9d-9756-42acc21fdaea",
       "guestName": "Ingoibibo",
       "start": "2027-01-14T15:00:00.000Z",
       "end": "2027-01-15T15:00:00.000Z",
@@ -508,7 +508,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "4f27743d-0ea0-452b-b15c-a1b50e489f19",
+      "id": "e78a0111-0822-4f28-b546-5351fc9c64fa",
       "guestName": "Ingoibibo",
       "start": "2027-01-15T15:00:00.000Z",
       "end": "2027-01-16T15:00:00.000Z",
@@ -516,7 +516,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "dbd5d62c-8feb-4b03-8763-368c1279b9ab",
+      "id": "991c58fa-7596-4da0-b315-90bfd91ca321",
       "guestName": "Ingoibibo",
       "start": "2027-01-16T15:00:00.000Z",
       "end": "2027-01-17T15:00:00.000Z",
@@ -524,7 +524,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "fd564cd7-be1b-4e55-b1ef-8a387362e9cd",
+      "id": "26bff8b9-e70a-4801-84de-89c90aa31c90",
       "guestName": "Ingoibibo",
       "start": "2027-01-17T15:00:00.000Z",
       "end": "2027-01-18T15:00:00.000Z",
@@ -532,7 +532,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "7b59cbb7-1bee-458c-97d7-db6fd1e1fcb7",
+      "id": "49f4cdb6-04ff-4099-a766-ba9b24bcb270",
       "guestName": "Ingoibibo",
       "start": "2027-01-18T15:00:00.000Z",
       "end": "2027-01-19T15:00:00.000Z",
@@ -540,7 +540,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "56c07cda-5e60-4cf8-a2b5-ced16efb83fa",
+      "id": "f54cd7a7-6ff3-48ac-85ae-2bdeb95508c9",
       "guestName": "Ingoibibo",
       "start": "2027-01-19T15:00:00.000Z",
       "end": "2027-01-20T15:00:00.000Z",
@@ -548,7 +548,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "789ee4e5-940a-460e-a946-03422d8b0d06",
+      "id": "1b2c906b-94d4-4d94-b8fc-91d1c646bb92",
       "guestName": "Ingoibibo",
       "start": "2027-01-20T15:00:00.000Z",
       "end": "2027-01-21T15:00:00.000Z",
@@ -556,7 +556,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "e82ef9f1-fe50-452d-b12b-fb3493f8269d",
+      "id": "098ab898-f8cd-4026-998e-bcae49f84fc7",
       "guestName": "Ingoibibo",
       "start": "2027-01-21T15:00:00.000Z",
       "end": "2027-01-22T15:00:00.000Z",
@@ -564,7 +564,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "424ce6c7-9c20-4a4a-8b4c-85658fd9e2ec",
+      "id": "4873067b-f303-40ac-9abe-44e6f4a18361",
       "guestName": "Ingoibibo",
       "start": "2027-01-22T15:00:00.000Z",
       "end": "2027-01-23T15:00:00.000Z",
@@ -572,7 +572,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "7dc8d92a-15e3-4ae9-843e-28378d629101",
+      "id": "c8654c42-cbe5-4717-8847-fc910120edcc",
       "guestName": "Ingoibibo",
       "start": "2027-01-23T15:00:00.000Z",
       "end": "2027-01-24T15:00:00.000Z",
@@ -580,7 +580,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "17162de2-58ce-4959-a7a8-03e3b1ebf428",
+      "id": "0e4a1bed-e229-4d4e-ade4-aec9699f6962",
       "guestName": "Ingoibibo",
       "start": "2027-01-24T15:00:00.000Z",
       "end": "2027-01-25T15:00:00.000Z",
@@ -588,7 +588,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "84b5b694-10a2-421c-9d00-5f133b9d7732",
+      "id": "d1d066ed-657a-4dbd-b377-8926adc5d93b",
       "guestName": "Ingoibibo",
       "start": "2027-01-25T15:00:00.000Z",
       "end": "2027-01-26T15:00:00.000Z",
@@ -596,7 +596,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "92d000fb-1020-4966-979d-0e6b0d3ff348",
+      "id": "269238e8-4dc2-45a5-be70-497517ffd4d9",
       "guestName": "Ingoibibo",
       "start": "2027-01-26T15:00:00.000Z",
       "end": "2027-01-27T15:00:00.000Z",
@@ -604,7 +604,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "6cd94e0c-6169-4160-84ec-a10bce538b91",
+      "id": "534e084e-dcb6-4a4f-b60a-206b204eac45",
       "guestName": "Ingoibibo",
       "start": "2027-01-27T15:00:00.000Z",
       "end": "2027-01-28T15:00:00.000Z",
@@ -612,7 +612,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "fdc7104d-0299-4a29-a90d-ed62b716fc4b",
+      "id": "bd6affc5-ee5f-482f-ad7c-47cb202e4b2e",
       "guestName": "Ingoibibo",
       "start": "2027-01-28T15:00:00.000Z",
       "end": "2027-01-29T15:00:00.000Z",
@@ -620,7 +620,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "b8a3e414-d640-465b-b94c-b28ed869fbe0",
+      "id": "3e479a9d-5361-4bf4-8673-4583b31d9e8f",
       "guestName": "Ingoibibo",
       "start": "2027-01-29T15:00:00.000Z",
       "end": "2027-01-30T15:00:00.000Z",
@@ -628,7 +628,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "a08b11ac-c980-4289-b3f7-d9ef14e60e4c",
+      "id": "6a66a42c-7c37-4577-a314-cc3a6e104551",
       "guestName": "Ingoibibo",
       "start": "2027-01-30T15:00:00.000Z",
       "end": "2027-01-31T15:00:00.000Z",
@@ -636,7 +636,7 @@
       "source": "MakeMyTrip / Goibibo"
     },
     {
-      "id": "78be5413-8448-4cd0-89fe-329852844a06",
+      "id": "fb209768-cd9e-4727-8dae-4b8e860d1aaf",
       "guestName": "Ingoibibo",
       "start": "2027-01-31T15:00:00.000Z",
       "end": "2027-02-01T15:00:00.000Z",
@@ -644,6 +644,9 @@
       "source": "MakeMyTrip / Goibibo"
     }
   ],
+  "security": {
+    "pin": "8899"
+  },
   "tvs": [
     {
       "id": "living-room",
