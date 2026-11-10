@@ -295,6 +295,35 @@ function renderScreen(data) {
   const propNameTitle = document.getElementById('propNameTitle');
   const propMetaLine = document.getElementById('propMetaLine');
   const propCityTag = document.getElementById('propCityTag');
+  const brandBadge = document.getElementById('brandHouseBadge') || document.querySelector('.brand-house-badge');
+
+  if (brandBadge) {
+    if (prop.logoUrl && prop.logoUrl.trim()) {
+      brandBadge.classList.add('has-custom-logo');
+      const size = prop.logoSize || 'medium';
+      if (size === 'large') {
+        brandBadge.style.height = '54px';
+        brandBadge.style.maxWidth = '180px';
+      } else if (size === 'small') {
+        brandBadge.style.height = '34px';
+        brandBadge.style.maxWidth = '110px';
+      } else {
+        brandBadge.style.height = '44px';
+        brandBadge.style.maxWidth = '140px';
+      }
+      brandBadge.innerHTML = `<img src="${escapeAttr(prop.logoUrl.trim())}" alt="${escapeAttr(prop.name || 'Brand Logo')}" onerror="this.onerror=null; this.parentElement.classList.remove('has-custom-logo'); this.parentElement.innerHTML='<svg viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2.2\\'><path d=\\'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\\'></path><polyline points=\\'9 22 9 12 15 12 15 22\\'></polyline></svg>';">`;
+    } else {
+      brandBadge.classList.remove('has-custom-logo');
+      brandBadge.style.width = '42px';
+      brandBadge.style.height = '42px';
+      brandBadge.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      `;
+    }
+  }
 
   if (propNameTitle) propNameTitle.textContent = prop.name || 'Comfort Stay near CyberHub';
   if (propMetaLine) {
@@ -338,7 +367,15 @@ function renderScreen(data) {
   }
 
   if (hostSignoff) {
-    hostSignoff.textContent = guest.hostSignoff || `- ${prop.hostName || 'Wasim'}`;
+    const rawSignoff = (guest.hostSignoff || '').trim();
+    const activeHost = (prop.hostName || '').trim();
+    if (rawSignoff && !rawSignoff.toLowerCase().includes('wasim')) {
+      hostSignoff.textContent = rawSignoff.startsWith('–') || rawSignoff.startsWith('-') ? rawSignoff : `– ${rawSignoff}`;
+    } else if (activeHost) {
+      hostSignoff.textContent = `– ${activeHost}`;
+    } else {
+      hostSignoff.textContent = '– Gautham';
+    }
   }
 
   // 3. Stay & Checkout Capsule Values

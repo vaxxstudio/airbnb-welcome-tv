@@ -123,8 +123,10 @@ function populateForm(data) {
   // 2. Property & Host Profile
   setValue('inputPropName', prop.name || 'The Glasshouse Villa');
   setValue('inputPropLoc', prop.location || 'Malibu, California');
-  setValue('inputHostName', prop.hostName || 'Marcus & Elena');
-  setValue('inputHostContact', prop.hostContact || '+1 (310) 555-0192');
+  setValue('inputHostName', prop.hostName || 'Gautham');
+  setValue('inputHostContact', prop.hostContact || 'Message Gautham on the Airbnb app');
+  const signoff = guest.hostSignoff && !guest.hostSignoff.includes('Wasim') ? guest.hostSignoff : (prop.hostName ? `– ${prop.hostName}` : '– Gautham');
+  setValue('inputHostSignoff', signoff);
 
   // 3. Wi-Fi & Weather City
   setValue('inputWifiSsid', wifi.ssid);
@@ -511,6 +513,7 @@ function collectFormData() {
       stayNights: calculateStayNights(getValue('inputCheckIn'), getValue('inputCheckOut')) || state?.guest?.stayNights || '3 nights',
       checkoutTime: getValue('inputCheckoutTime') || '11:00 AM',
       welcomeNote: getValue('inputWelcomeNote'),
+      hostSignoff: getValue('inputHostSignoff') || (getValue('inputHostName') ? `– ${getValue('inputHostName')}` : '– Gautham'),
       overrideMode: getValue('selectOverrideMode') || 'welcome'
     },
     wifi: {
@@ -554,6 +557,15 @@ function setupEventListeners() {
   // Screen mode change
   document.getElementById('selectOverrideMode')?.addEventListener('change', () => {
     pushLiveUpdate(true);
+  });
+
+  // Host name change auto-updates signoff
+  document.getElementById('inputHostName')?.addEventListener('input', (e) => {
+    const name = e.target.value.trim();
+    const signoffInput = document.getElementById('inputHostSignoff');
+    if (signoffInput && (!signoffInput.value || signoffInput.value.includes('Wasim') || signoffInput.value.startsWith('– '))) {
+      signoffInput.value = name ? `– ${name}` : '';
+    }
   });
 
   // Logo position and size change

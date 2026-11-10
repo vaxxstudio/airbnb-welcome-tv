@@ -2,10 +2,10 @@
   "property": {
     "name": "The Zenest",
     "location": "Thekkady",
-    "metaSubtitle": "1BHK · 300 MBPS WI-FI · GURUGRAM",
+    "metaSubtitle": "1BHK · 300 MBPS WI-FI · THEKKADY",
     "hostName": "Gautham",
     "hostContact": "Message Gautham on the Airbnb app",
-    "logoUrl": "",
+    "logoUrl": "assets/uploads/APOV__6__1794318134361.png",
     "logoPosition": "header",
     "logoSize": "medium",
     "colorPalette": "apple_gold",
@@ -32,7 +32,7 @@
     "stayNights": "1 night",
     "checkoutTime": "Thu 8 Nov, 11:00 AM",
     "welcomeNote": "Make yourself at home. If you need anything, message me on Airbnb.",
-    "hostSignoff": "– Wasim",
+    "hostSignoff": "– Gautham",
     "overrideMode": "welcome"
   },
   "wifi": {

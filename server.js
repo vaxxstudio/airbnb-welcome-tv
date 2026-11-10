@@ -13,8 +13,8 @@ const DEFAULT_DATA = {
     "name": "Comfort Stay near CyberHub",
     "location": "Gurugram",
     "metaSubtitle": "1BHK · 300 MBPS WI-FI · GURUGRAM",
-    "hostName": "Wasim",
-    "hostContact": "Message Wasim on the Airbnb app",
+    "hostName": "Gautham",
+    "hostContact": "Message Gautham on the Airbnb app",
     "logoUrl": "",
     "logoPosition": "header",
     "logoSize": "medium",
@@ -35,7 +35,7 @@ const DEFAULT_DATA = {
     "stayNights": "3 nights",
     "checkoutTime": "Tue 10 Nov, 11:00 AM",
     "welcomeNote": "Make yourself at home. If you need anything, message me on Airbnb.",
-    "hostSignoff": "– Wasim",
+    "hostSignoff": "– Gautham",
     "overrideMode": "welcome"
   },
   "wifi": {
