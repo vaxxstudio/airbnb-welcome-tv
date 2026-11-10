@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura TV — Host Studio Pro</title>
+  <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+
+  <div class="dash-layout">
+
+    <!-- Sidebar Navigation -->
+    <aside class="dash-sidebar">
+      <div>
+        <div class="brand-header">
+          <div class="brand-logo">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
+            </svg>
+          </div>
+          <div class="brand-title">
+            <h2>Aura TV Pro</h2>
+            <span>Airbnb Welcome Studio</span>
+          </div>
+        </div>
+
+        <ul class="nav-menu">
+          <li>
+            <a class="nav-link active" href="#guestSection">
+              <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              Guest & Greeting
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#propertySection">
+              <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              Property & Host
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#calendarSection">
+              <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+              Calendar Sync
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#tvManagerSection">
+              <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+              Every TV, by Name
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#wifiSection">
+              <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
+              Wi-Fi in One Scan
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#rulesSection">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+              Rules & Check-out
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#guideSection">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Local Guide
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#designSection">
+              <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.64 10.56 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/></svg>
+              Colours & Layouts
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="#brandingSection">
+              <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Logo & Custom Photos
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="tv-url-pill">
+          <strong>Smart TV Address (LAN):</strong>
+          <span id="tvDisplayUrl">http://...:3000/</span>
+        </div>
+        <button class="btn btn-secondary btn-sm" id="btnCopyUrl">Copy TV Screen URL</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Canvas -->
+    <main class="dash-main">
+
+      <!-- Topbar Header -->
+      <header class="dash-topbar">
+        <div class="page-title">
+          <h1>Welcome Screen Studio Pro</h1>
+          <p>Everything a guest needs, on the screen they already look at.</p>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="btn btn-secondary" id="btnResetDefault">Reset Demo</button>
+          <a class="btn btn-secondary" href="/index.html" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            Open TV Screen
+          </a>
+          <button class="btn btn-primary" id="btnSavePush">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            Push to TV Live
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Grid: Forms + Live Simulator -->
+      <div class="dash-grid">
+
+        <!-- Left Form Column -->
+        <div class="form-column">
+
+          <!-- Panel 1: Guest Information & Mode Switcher -->
+          <section class="card-panel" id="guestSection">
+            <div class="panel-title">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                Current Guest & Screen Mode
+              </h3>
+              <span class="panel-badge">Hero Welcome</span>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label>Screen Display Mode</label>
+                <select class="select" id="selectOverrideMode">
+                  <option value="auto">Auto (Follows Airbnb Calendar)</option>
+                  <option value="welcome">During Stay — "Welcome, Priya!"</option>
+                  <option value="checkout">Check-out Day — Departure Steps & Safe Travels</option>
+                  <option value="between_guests">Between Guests — Standby & Property Showcase</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Guest Name(s)</label>
+                <input class="input" type="text" id="inputGuestNames" placeholder="e.g. Priya & Rohan">
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom: 8px;">
+              <div class="field">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                  <label for="inputCheckIn">Stay Dates</label>
+                  <button type="button" id="btnToggleCalendar" class="cal-toggle-pill" title="Toggle interactive visual calendar">
+                    <span id="calToggleIcon">📅</span> <span id="calToggleLabel">Interactive Calendar</span>
+                  </button>
+                </div>
+                <div style="display:flex; gap:8px;">
+                  <div style="position:relative; flex:1;">
+                    <input class="input" type="text" id="inputCheckIn" placeholder="Check-in: Sat 7 Nov" style="width:100%; padding-left:32px;">
+                    <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:12px; opacity:0.65;" title="Check-in">📥</span>
+                  </div>
+                  <div style="position:relative; flex:1;">
+                    <input class="input" type="text" id="inputCheckOut" placeholder="Check-out: Tue 10 Nov" style="width:100%; padding-left:32px;">
+                    <span style="position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:12px; opacity:0.65;" title="Check-out">📤</span>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label for="inputCheckoutTime">Check-out Time</label>
+                <input class="input" type="text" id="inputCheckoutTime" placeholder="11:00 AM">
+              </div>
+            </div>
+
+            <!-- Interactive Stay Dates Calendar Widget -->
+            <div id="stayCalendarWidget" class="stay-cal-widget">
+              <div class="stay-cal-header">
+                <div class="stay-cal-title-box">
+                  <span class="stay-cal-month" id="calCurrentMonthTitle">November 2026</span>
+                  <span class="stay-cal-nights-pill" id="calNightsBadge">3 nights selected</span>
+                </div>
+                <div class="stay-cal-actions">
+                  <button type="button" class="stay-cal-nav-btn" id="calPrevMonth" title="Previous Month">‹</button>
+                  <button type="button" class="stay-cal-nav-btn stay-cal-today-btn" id="calGoToday" title="Jump to Current Month">Today</button>
+                  <button type="button" class="stay-cal-nav-btn" id="calNextMonth" title="Next Month">›</button>
+                </div>
+              </div>
+
+              <!-- Day of week headers -->
+              <div class="stay-cal-weekdays">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+              </div>
+
+              <!-- Days grid -->
+              <div class="stay-cal-grid" id="calDaysGrid">
+                <!-- Dynamically populated by dashboard.js -->
+              </div>
+
+              <!-- Calendar Footer Presets & Legend -->
+              <div class="stay-cal-footer">
+                <div class="stay-cal-presets">
+                  <span style="font-size:0.75rem; color:var(--text-sub); margin-right:2px;">Quick:</span>
+                  <button type="button" class="stay-cal-preset-pill" data-preset="tonight">Tonight (1n)</button>
+                  <button type="button" class="stay-cal-preset-pill" data-preset="weekend">This Weekend</button>
+                  <button type="button" class="stay-cal-preset-pill" data-preset="next3">Next 3 Nights</button>
+                  <button type="button" class="stay-cal-preset-pill" data-preset="nextWeek">Next Week (5n)</button>
+                </div>
+                <div class="stay-cal-legend">
+                  <span><span class="cal-legend-dot dot-stay"></span> Current Stay</span>
+                  <span><span class="cal-legend-dot dot-booked"></span> iCal Reserved</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row single">
+              <div class="field">
+                <label>Welcome Note</label>
+                <textarea class="textarea" id="inputWelcomeNote" rows="3" placeholder="Personal message shown on the big screen..."></textarea>
+              </div>
+            </div>
+          </section>
+
+          <!-- Panel 2: Property & Host Profile -->
+          <section class="card-panel" id="propertySection">
+            <div class="panel-title">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                Property & Host Details
+              </h3>
+              <span class="panel-badge">Header Bar</span>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label>Property Name</label>
+                <input class="input" type="text" id="inputPropName" placeholder="e.g. The Glasshouse Villa">
+              </div>
+              <div class="field">
+                <label>Location / City</label>
+                <input class="input" type="text" id="inputPropLoc" placeholder="e.g. Malibu, California">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label>Host Name(s)</label>
+                <input class="input" type="text" id="inputHostName" placeholder="e.g. Marcus & Elena">
+              </div>
+              <div class="field">
+                <label>Host Contact / WhatsApp</label>
+                <input class="input" type="text" id="inputHostContact" placeholder="+1 (310) 555-0192">
+              </div>
+            </div>
+          </section>
+
+          <!-- Panel 3: Calendar Integrations -->
+          <section class="card-panel" id="calendarSection">
+            <div class="panel-title">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+                Calendar Integrations (Multi-OTA iCal Sync)
+              </h3>
+              <div style="display:flex; gap:8px;">
+                <button type="button" class="btn btn-secondary btn-sm" id="btnAddCalendarRow" title="Add another OTA calendar feed">
+                  + Add Calendar
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" id="btnSyncCalendarNow" title="Sync all active calendars right now">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                  Sync All Now
+                </button>
+              </div>
+            </div>
+            <p style="font-size:0.82rem; color:var(--text-sub); margin-bottom:14px;">
+              Connect multiple calendar links together — <strong>Airbnb</strong>, <strong>Booking.com</strong>, <strong>MakeMyTrip / Goibibo</strong>, or custom PMS. All bookings are synced, merged, and deduplicated automatically every 30 minutes.
+            </p>
+
+            <!-- Multi-Calendar Channels List -->
+            <div id="calendarsListContainer" style="display:flex; flex-direction:column; gap:10px;">
+              <!-- Populated by dashboard.js -->
+            </div>
+
+            <!-- Consolidated Master Feed Info -->
+            <div style="margin-top:14px; padding:12px 14px; background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.22); border-radius:10px; font-size:0.78rem; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+              <div>
+                <strong style="color:var(--accent); display:flex; align-items:center; gap:6px;">
+                  <span>⚡</span> Master All-in-One iCal Feed Available
+                </strong>
+                <div style="color:var(--text-sub); margin-top:2px;">
+                  Your merged 3-OTA feed is live locally at <code style="color:#ffffff; background:rgba(0,0,0,0.3); padding:2px 6px; border-radius:4px;">http://localhost:3001/api/ical</code>
+                </div>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm" id="btnCopyMasterIcal" style="padding:4px 10px; font-size:0.74rem;">
+                Copy Feed URL
+              </button>
+            </div>
+
+            <div style="margin-top:16px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <label style="font-size:0.8rem; font-weight:600; color:var(--text-sub);">Upcoming Reservations (Merged across all OTAs):</label>
+                <span id="bookingsCountBadge" style="font-size:0.72rem; color:var(--accent); background:rgba(212,175,55,0.12); padding:2px 8px; border-radius:9999px;">0 reservations</span>
+              </div>
+              <div id="calendarBookingsList" style="display:flex; flex-direction:column; gap:6px;"></div>
+            </div>
+          </section>
+
+          <!-- Panel 4: Every TV, By Name -->
+          <section class="card-panel" id="tvManagerSection">
+            <div class="panel-title">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+                Every TV, by Name
+              </h3>
+              <span class="panel-badge">Multi-Room</span>
+            </div>
+            <p style="font-size:0.82rem; color:var(--text-sub); margin-bottom:14px;">
+              Name each TV in your stay, see when it was last on, and open each screen with its own dedicated room link.
+            </p>
+
+            <div id="tvDeviceList" style="display:flex; flex-direction:column; gap:10px;"></div>
+          </section>
+
+          <!-- Panel 5: Wi-Fi Setup -->
+          <section class="card-panel" id="wifiSection">
+            <div class="panel-title">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
+                Wi-Fi in One Scan
+              </h3>
+              <span class="panel-badge">Auto QR</span>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label>Network Name (SSID)</label>
+                <input class="input" type="text" id="inputWifiSsid" placeholder="e.g. Glasshouse_Private_5G">
+              </div>
+              <div class="field">
+                <label>Wi-Fi Password</label>
+                <input class="input" type="text" id="inputWifiPass" placeholder="Password">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label>Security Encryption</label>
+                <select class="select" id="selectWifiSecurity">
+                  <option value="WPA">WPA / WPA2 / WPA3 (Standard)</option>
+                  <option value="WEP">WEP (Legacy)</option>
+                  <option value="nopass">None (Open Network)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Weather City (for 3-Day Forecast)</label>
+                <input class="input" type="text" id="inputWeatherCity" placeholder="e.g. Malibu">
+              </div>
+            </div>
+          </section>
+
+          <!-- Panel 6: Rules & Check-out Steps -->
+          <section class="card-panel" id="rulesSection">
+            <div class="panel-title">
+              <h3>House Rules</h3>
+              <button class="btn btn-secondary btn-sm" id="btnAddRule">+ Add Rule</button>
+            </div>
+            <div class="item-repeater" id="rulesRepeater"></div>
+
+            <div class="panel-title" style="margin-top: 24px;">
+              <h3>Check-out Steps (Shown on Departure Day)</h3>
+              <button class="btn btn-secondary btn-sm" id="btnAddCheckout">+ Add Step</button>
+            </div>
+            <div class="item-repeater" id="checkoutRepeater"></div>
+          </section>
+
+          <!-- Panel 6b: Stay Amenities (Horizontal TV Row) -->
+          <section class="card-panel" id="amenitiesSection">
+            <div class="panel-title">
+              <div>
+                <h3>Stay Amenities (Horizontal TV Row)</h3>
+                <span style="font-size:0.75rem; color:var(--text-sub); display:block; margin-top:2px;">
+                  Shown directly under your stay capsule on the TV screen
+                </span>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btnAddAmenity">+ Add Amenity</button>
+            </div>
+            <div class="item-repeater" id="amenitiesRepeater"></div>
+          </section>
+
+          <!-- Panel 7: Local Guide Recommendations -->
+          <section class="card-panel" id="guideSection">
+            <div class="panel-title">
+              <h3>Concierge & Local Guide</h3>
+              <button class="btn btn-secondary btn-sm" id="btnAddGuide">+ Add Place</button>
+            </div>
+            <div class="item-repeater" id="guideRepeater"></div>
+          </section>
+
+          <!-- Panel 8: Colours & Layouts -->
+          <section class="card-panel" id="designSection">
+            <div class="panel-title">
+              <h3>Colours and Layouts</h3>
+              <span class="panel-badge">Apple tvOS Design</span>
+            </div>
+
+            <div class="field">
+              <label>Choose Layout Style (5 Modes)</label>
+              <select class="select" id="selectLayout">
+                <option value="wifi_left">1. Modern Split — Top Rules, Left Wi-Fi & Weather, Right Cards (Reference Layout A)</option>
+                <option value="wifi_right">2. Classic Split — Left Welcome & Stay, Right Wi-Fi & Weather (Reference Layout B)</option>
+                <option value="fullscreen_hero">3. Full-Screen Photo Hero (Immersion Focus)</option>
+                <option value="photo_strip">4. Photo Strip (Bottom Gallery Bar)</option>
+                <option value="checkout_focus">5. Smooth Check-out Focus (Highlighted Checklist)</option>
+              </select>
+            </div>
+
+            <div class="field" style="margin-top:16px;">
+              <label>Nine Ready-Made Themes & Colour Palettes</label>
+              <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-top:8px;" id="paletteGrid">
+                <div class="theme-card active" data-palette="landscape_mountain">
+                  <div style="height:26px; border-radius:6px; background:linear-gradient(135deg, #3b82f6 0%, #10b981 100%); margin-bottom:4px;"></div>
+                  <div class="theme-label">Apple TV Mountain</div>
+                </div>
+                <div class="theme-card" data-palette="apple_gold">
+                  <div style="height:26px; border-radius:6px; background:#d4af37; margin-bottom:4px;"></div>
+                  <div class="theme-label">Warm Ambient Room</div>
+                </div>
+                <div class="theme-card" data-palette="slate_minimal">
+                  <div style="height:26px; border-radius:6px; background:#262930; margin-bottom:4px;"></div>
+                  <div class="theme-label">Charcoal OLED Dark</div>
+                </div>
+                <div class="theme-card" data-palette="emerald_estate">
+                  <div style="height:26px; border-radius:6px; background:#10b981; margin-bottom:4px;"></div>
+                  <div class="theme-label">Emerald Estate</div>
+                </div>
+                <div class="theme-card" data-palette="royal_sapphire">
+                  <div style="height:26px; border-radius:6px; background:#3b82f6; margin-bottom:4px;"></div>
+                  <div class="theme-label">Royal Sapphire</div>
+                </div>
+                <div class="theme-card" data-palette="rose_velvet">
+                  <div style="height:26px; border-radius:6px; background:#f43f5e; margin-bottom:4px;"></div>
+                  <div class="theme-label">Rose Velvet</div>
+                </div>
+                <div class="theme-card" data-palette="midnight_obsidian">
+                  <div style="height:26px; border-radius:6px; background:#818cf8; margin-bottom:4px;"></div>
+                  <div class="theme-label">Midnight</div>
+                </div>
+                <div class="theme-card" data-palette="warm_terracotta">
+                  <div style="height:26px; border-radius:6px; background:#f97316; margin-bottom:4px;"></div>
+                  <div class="theme-label">Terracotta</div>
+                </div>
+                <div class="theme-card" data-palette="nordic_frost">
+                  <div style="height:26px; border-radius:6px; background:#06b6d4; margin-bottom:4px;"></div>
+                  <div class="theme-label">Nordic Frost</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Panel 9: Logo & Your Own Photos -->
+          <section class="card-panel" id="brandingSection">
+            <div class="panel-title">
+              <h3>Your Logo & Custom Photos (Pro)</h3>
+              <span class="panel-badge">White-Label</span>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label>Your Brand / Stay Logo</label>
+                <div class="input-upload-group">
+                  <input class="input" type="url" id="inputLogoUrl" placeholder="https://your-domain.com/logo.png">
+                  <button type="button" class="btn-upload" id="btnUploadLogo" title="Choose logo file">📁 Upload</button>
+                  <input type="file" id="fileLogo" accept="image/*" style="display:none;">
+                </div>
+                <div class="upload-preview-box" id="previewBoxLogo" style="display:none;">
+                  <img class="upload-preview-thumb" id="thumbLogo" src="" alt="Logo Preview">
+                  <span class="upload-preview-meta" id="metaLogo"></span>
+                  <span class="upload-badge-ok">✓ Ready</span>
+                </div>
+              </div>
+              <div class="field">
+                <label>Logo Placement & Size</label>
+                <div style="display:flex; gap:8px;">
+                  <select class="select" id="selectLogoPosition" style="flex:1;">
+                    <option value="header">Next to Property Name</option>
+                    <option value="wifi">Above Wi-Fi Code</option>
+                  </select>
+                  <select class="select" id="selectLogoSize" style="flex:0.8;">
+                    <option value="small">Small</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="large">Large</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px;">
+              <label style="font-size:0.8rem; font-weight:600; color:var(--text-sub); display:block; margin-bottom:8px;">
+                Photos for Each Stage of the Guest Experience:
+              </label>
+
+              <!-- Photo 1: Stay -->
+              <div class="field" style="margin-bottom:12px;">
+                <label>1. Photo during the stay</label>
+                <div class="input-upload-group">
+                  <input class="input" type="url" id="inputPhotoStay" placeholder="assets/backdrop-living-room.jpg">
+                  <button type="button" class="btn-upload" id="btnUploadPhotoStay" title="Upload stay photo">📁 Upload</button>
+                  <input type="file" id="filePhotoStay" accept="image/*" style="display:none;">
+                </div>
+                <div class="upload-preview-box" id="previewBoxPhotoStay" style="display:none;">
+                  <img class="upload-preview-thumb" id="thumbPhotoStay" src="" alt="Stay Photo">
+                  <span class="upload-preview-meta" id="metaPhotoStay"></span>
+                  <span class="upload-badge-ok">✓ Ready</span>
+                </div>
+              </div>
+
+              <!-- Photo 2: Checkout -->
+              <div class="field" style="margin-bottom:12px;">
+                <label>2. Photo on check-out day</label>
+                <div class="input-upload-group">
+                  <input class="input" type="url" id="inputPhotoCheckout" placeholder="assets/backdrop-checkout.jpg">
+                  <button type="button" class="btn-upload" id="btnUploadPhotoCheckout" title="Upload checkout photo">📁 Upload</button>
+                  <input type="file" id="filePhotoCheckout" accept="image/*" style="display:none;">
+                </div>
+                <div class="upload-preview-box" id="previewBoxPhotoCheckout" style="display:none;">
+                  <img class="upload-preview-thumb" id="thumbPhotoCheckout" src="" alt="Checkout Photo">
+                  <span class="upload-preview-meta" id="metaPhotoCheckout"></span>
+                  <span class="upload-badge-ok">✓ Ready</span>
+                </div>
+              </div>
+
+              <!-- Photo 3: Standby -->
+              <div class="field" style="margin-bottom:16px;">
+                <label>3. Photo between guests (standby)</label>
+                <div class="input-upload-group">
+                  <input class="input" type="url" id="inputPhotoIdle" placeholder="assets/backdrop-idle.jpg">
+                  <button type="button" class="btn-upload" id="btnUploadPhotoIdle" title="Upload standby photo">📁 Upload</button>
+                  <input type="file" id="filePhotoIdle" accept="image/*" style="display:none;">
+                </div>
+                <div class="upload-preview-box" id="previewBoxPhotoIdle" style="display:none;">
+                  <img class="upload-preview-thumb" id="thumbPhotoIdle" src="" alt="Standby Photo">
+                  <span class="upload-preview-meta" id="metaPhotoIdle"></span>
+                  <span class="upload-badge-ok">✓ Ready</span>
+                </div>
+              </div>
+
+              <!-- Extra: Custom TV Wallpapers (15-Sec Rotation) -->
+              <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:14px; margin-top:14px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <div>
+                    <label style="font-size:0.82rem; font-weight:600; color:var(--text-main); margin-bottom:2px; display:block;">
+                      4. TV Wallpapers (15-Sec Scenic Rotation)
+                    </label>
+                    <span style="font-size:0.75rem; color:var(--text-sub);">
+                      Upload your property photos to automatically rotate on the TV background
+                    </span>
+                  </div>
+                  <button type="button" class="btn btn-secondary btn-sm" id="btnUploadWallpaper">
+                    + Upload Wallpaper
+                  </button>
+                  <input type="file" id="fileWallpaper" accept="image/*" style="display:none;">
+                </div>
+                <div class="upload-wallpapers-grid" id="wallpapersGrid"></div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Right Side: Live TV Simulator -->
+        <div class="preview-column">
+          <div class="card-panel">
+            <div class="panel-title">
+              <h3>Live TV Preview</h3>
+              <div class="tv-status-badge">
+                <span class="status-dot"></span>
+                <span>Real-Time Sync Active</span>
+              </div>
+            </div>
+
+            <div class="tv-simulator-container">
+              <div class="tv-bezel">
+                <iframe class="tv-screen-frame" id="tvSimulatorFrame" src="/index.html"></iframe>
+              </div>
+              <p style="font-size:0.78rem; color:var(--text-sub); text-align:center;">
+                Updates automatically in seconds as you type or when Airbnb calendar syncs.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-panel">
+            <div class="panel-title">
+              <h3>Smart TV Browser Guide</h3>
+            </div>
+            <ol style="font-size:0.82rem; color:var(--text-main); margin-left:18px; line-height:1.6;">
+              <li>Open the TV's <strong>Web Browser</strong> app.</li>
+              <li>Navigate to: <code id="tvIpCode" style="color:var(--accent);">http://...:3000/</code></li>
+              <li>Press the TV remote's <strong>Full Screen</strong> button.</li>
+              <li>Press <kbd style="background:rgba(255,255,255,0.15); padding:2px 6px; border-radius:4px;">S</kbd> to activate the screensaver!</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <div class="toast" id="toast">Changes pushed to TV!</div>
+
+  <script src="scripts/dashboard.js"></script>
+</body>
+</html>

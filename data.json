@@ -1,0 +1,663 @@
+{
+  "property": {
+    "name": "The Zenest",
+    "location": "Thekkady",
+    "metaSubtitle": "1BHK · 300 MBPS WI-FI · GURUGRAM",
+    "hostName": "Gautham",
+    "hostContact": "Message Gautham on the Airbnb app",
+    "logoUrl": "",
+    "logoPosition": "header",
+    "logoSize": "medium",
+    "colorPalette": "apple_gold",
+    "customAccentColor": "",
+    "isPro": true,
+    "layout": "wifi_left",
+    "photos": {
+      "stay": "assets/backdrop-living-room.jpg",
+      "checkout": "assets/backdrop-checkout.jpg",
+      "idle": "assets/backdrop-idle.jpg"
+    },
+    "wallpapers": [
+      "assets/backdrop-landscape.jpg",
+      "assets/pine-sunbeams.jpg",
+      "assets/pine-forest-2.jpg",
+      "assets/pine-forest-3.jpg",
+      "assets/backdrop-living-room.jpg"
+    ]
+  },
+  "guest": {
+    "names": "Theertha",
+    "checkIn": "Wed 7 Nov",
+    "checkOut": "Thu 8 Nov",
+    "stayNights": "1 night",
+    "checkoutTime": "Thu 8 Nov, 11:00 AM",
+    "welcomeNote": "Make yourself at home. If you need anything, message me on Airbnb.",
+    "hostSignoff": "– Wasim",
+    "overrideMode": "welcome"
+  },
+  "wifi": {
+    "ssid": "Vellara",
+    "password": "vhome@123",
+    "security": "WPA"
+  },
+  "rules": [
+    {
+      "title": "No smoking",
+      "desc": ""
+    },
+    {
+      "title": "No parties",
+      "desc": ""
+    },
+    {
+      "title": "No pets",
+      "desc": ""
+    },
+    {
+      "title": "Max 3 guests",
+      "desc": ""
+    },
+    {
+      "title": "Quiet hours 22:00–07:00",
+      "desc": ""
+    }
+  ],
+  "amenities": [
+    {
+      "icon": "wifi",
+      "title": "High-speed Wi-Fi",
+      "sub": "Fast and free"
+    },
+    {
+      "icon": "tv",
+      "title": "Smart TV",
+      "sub": "Apps & streaming"
+    },
+    {
+      "icon": "ac",
+      "title": "AC",
+      "sub": "Stay cool"
+    },
+    {
+      "icon": "parking",
+      "title": "Free Parking",
+      "sub": "Private"
+    },
+    {
+      "icon": "balcony",
+      "title": "Out door Balcony",
+      "sub": "Balcony"
+    }
+  ],
+  "checkout": [
+    {
+      "title": "AC & Lights Off",
+      "desc": "Please turn off climate units and geysers before leaving."
+    },
+    {
+      "title": "Keys on Table",
+      "desc": "Leave keys on the dining table console."
+    },
+    {
+      "title": "Close & Lock Door",
+      "desc": "Pull the main entrance door firmly until it latches locked."
+    }
+  ],
+  "recommendations": [
+    {
+      "name": "CyberHub Social",
+      "category": "Dining & Drinks",
+      "distance": "0.5 km",
+      "tip": "Great rooftop ambiance and craft beverages."
+    },
+    {
+      "name": "Blue Tokai Coffee",
+      "category": "Artisan Café",
+      "distance": "0.3 km",
+      "tip": "Specialty pour-overs and fresh sourdough toast."
+    },
+    {
+      "name": "Galleria Market",
+      "category": "Shopping & Street Food",
+      "distance": "1.5 km",
+      "tip": "Open-air market with local snacks and boutiques."
+    }
+  ],
+  "weather": {
+    "city": "Thekkady",
+    "latitude": 28.4595,
+    "longitude": 77.0266
+  },
+  "calendars": [
+    {
+      "id": "cal_airbnb",
+      "name": "Airbnb",
+      "type": "airbnb",
+      "url": "https://www.airbnb.co.in/calendar/ical/1608518019172162450.ics?t=d0c9317592234ce0baf9bf0a136d0a49",
+      "lastSynced": "2026-11-10T17:20:45.237Z",
+      "status": "active"
+    },
+    {
+      "id": "cal_booking",
+      "name": "Booking.com",
+      "type": "booking",
+      "url": "https://ical.booking.com/v1/export?t=cd2f7888-34fa-410a-b06b-c11bc831d79c",
+      "lastSynced": "2026-11-10T17:20:45.871Z",
+      "status": "active"
+    },
+    {
+      "id": "cal_mmt",
+      "name": "MakeMyTrip / Goibibo",
+      "type": "mmt",
+      "url": "https://ingo-content-clientbackend.goibibo.com/public/ecs/downloadCalendar/45002010708?bid=b57f0e8adcad2f049b7b94f5fb70bb42&otherBrandName=zen",
+      "lastSynced": "2026-11-10T17:20:46.482Z",
+      "status": "active"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "7f662ec65913-50f4b0df2b7bae350b7944b811c72a01@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-11-08T15:00:00.000Z",
+      "end": "2026-11-11T15:00:00.000Z",
+      "summary": "Airbnb (Not available)",
+      "source": "Airbnb"
+    },
+    {
+      "id": "808a0954-3bd2-43ea-9315-8a1ac78018bf",
+      "guestName": "Ingoibibo",
+      "start": "2026-11-11T15:00:00.000Z",
+      "end": "2026-11-12T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "7f662ec65913-c0fbeb5078d4b7e20262d61a0442100c@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-11-12T15:00:00.000Z",
+      "end": "2026-11-14T15:00:00.000Z",
+      "summary": "Airbnb (Not available)",
+      "source": "Airbnb"
+    },
+    {
+      "id": "7b551881-e662-4d94-95c8-9e6c47d55110",
+      "guestName": "Ingoibibo",
+      "start": "2026-11-12T15:00:00.000Z",
+      "end": "2026-11-13T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "4766abb0-5499-4ef3-a2c1-b6715a70bd2e",
+      "guestName": "Ingoibibo",
+      "start": "2026-11-13T15:00:00.000Z",
+      "end": "2026-11-14T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "12d99f39b2690b19d65978c88bf2d438@booking.com",
+      "guestName": "Booking.com Guest",
+      "start": "2026-11-14T15:00:00.000Z",
+      "end": "2026-11-15T15:00:00.000Z",
+      "summary": "CLOSED - Not available",
+      "source": "Booking.com"
+    },
+    {
+      "id": "1418fb94e984-2a27777c59acae3cc8e1c97e09ea59f1@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-11-15T15:00:00.000Z",
+      "end": "2026-11-16T15:00:00.000Z",
+      "summary": "Reserved",
+      "source": "Airbnb"
+    },
+    {
+      "id": "1418fb94e984-06e59d0ad5694b377ccb9e3761119041@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-11-16T15:00:00.000Z",
+      "end": "2026-11-17T15:00:00.000Z",
+      "summary": "Reserved",
+      "source": "Airbnb"
+    },
+    {
+      "id": "6eed14cc965251693c3ba6841da125af@booking.com",
+      "guestName": "Booking.com Guest",
+      "start": "2026-11-18T15:00:00.000Z",
+      "end": "2026-11-19T15:00:00.000Z",
+      "summary": "CLOSED - Not available",
+      "source": "Booking.com, MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "7f662ec65913-df8e31284b7270530f6b0c4ef892509a@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-11-22T15:00:00.000Z",
+      "end": "2026-11-25T15:00:00.000Z",
+      "summary": "Airbnb (Not available)",
+      "source": "Airbnb"
+    },
+    {
+      "id": "1418fb94e984-61647f32bcd3614813512c1aef7a9f8b@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-11-26T15:00:00.000Z",
+      "end": "2026-11-28T15:00:00.000Z",
+      "summary": "Reserved",
+      "source": "Airbnb"
+    },
+    {
+      "id": "510aed051f788b0b301f3f34d8eb7758@booking.com",
+      "guestName": "Booking.com Guest",
+      "start": "2026-11-28T15:00:00.000Z",
+      "end": "2026-11-29T15:00:00.000Z",
+      "summary": "CLOSED - Not available",
+      "source": "Booking.com, MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "19c5b3a81fdb974d50de48635ed5be48@booking.com",
+      "guestName": "Booking.com Guest",
+      "start": "2026-11-30T15:00:00.000Z",
+      "end": "2026-12-01T15:00:00.000Z",
+      "summary": "CLOSED - Not available",
+      "source": "Booking.com"
+    },
+    {
+      "id": "1418fb94e984-b8d49264dd74b8c932856590d25e2c69@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-12-01T15:00:00.000Z",
+      "end": "2026-12-02T15:00:00.000Z",
+      "summary": "Reserved",
+      "source": "Airbnb"
+    },
+    {
+      "id": "f9e312057d07a76c82283dd030d9e81e@booking.com",
+      "guestName": "Booking.com Guest",
+      "start": "2026-12-05T15:00:00.000Z",
+      "end": "2026-12-06T15:00:00.000Z",
+      "summary": "CLOSED - Not available",
+      "source": "Booking.com"
+    },
+    {
+      "id": "1418fb94e984-27aeef7de0d8d57a1bce7263625cd5f0@airbnb.com",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-06T15:00:00.000Z",
+      "end": "2026-12-07T15:00:00.000Z",
+      "summary": "Reserved",
+      "source": "Airbnb, MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "1418fb94e984-2c0cac37409b714d6cff26737cf1133d@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-12-12T15:00:00.000Z",
+      "end": "2026-12-13T15:00:00.000Z",
+      "summary": "Reserved",
+      "source": "Airbnb"
+    },
+    {
+      "id": "7f662ec65913-6912fdaf4e7e40d60ceb6126de21fafd@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-12-13T15:00:00.000Z",
+      "end": "2026-12-14T15:00:00.000Z",
+      "summary": "Airbnb (Not available)",
+      "source": "Airbnb"
+    },
+    {
+      "id": "7f662ec65913-cee6bc9e5aa64c5bf259e238f0a9805e@airbnb.com",
+      "guestName": "Airbnb Guest",
+      "start": "2026-12-21T15:00:00.000Z",
+      "end": "2027-01-25T15:00:00.000Z",
+      "summary": "Airbnb (Not available)",
+      "source": "Airbnb"
+    },
+    {
+      "id": "bbd172bb-e636-4128-979f-3087e980febf",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-21T15:00:00.000Z",
+      "end": "2026-12-22T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "a3855c7e-4693-4694-b21d-00763ee66fff",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-22T15:00:00.000Z",
+      "end": "2026-12-23T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "56060994-0ad3-4ffc-9676-0931836b5a6a",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-23T15:00:00.000Z",
+      "end": "2026-12-24T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "6113a6d3-f116-467e-b440-7b45c1acb5a1",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-24T15:00:00.000Z",
+      "end": "2026-12-25T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "39413207-8c70-4a99-8000-6a6b7dd0b8ba",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-25T15:00:00.000Z",
+      "end": "2026-12-26T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "eaa99f0f-816f-4433-8d56-99339ea11f8d",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-26T15:00:00.000Z",
+      "end": "2026-12-27T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "aa848065-4062-44ed-862d-30ffa511b9a9",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-27T15:00:00.000Z",
+      "end": "2026-12-28T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "d78e243e-34ac-407c-9b38-b6682d903268",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-28T15:00:00.000Z",
+      "end": "2026-12-29T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "13c3e42c-dac1-4927-8eb9-f29e10efcb5a",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-29T15:00:00.000Z",
+      "end": "2026-12-30T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "47c8c033-8fc5-4251-8541-a8b574b25bee",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-30T15:00:00.000Z",
+      "end": "2026-12-31T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "990f7337-327c-40d6-97d7-f61909ae3cd7",
+      "guestName": "Ingoibibo",
+      "start": "2026-12-31T15:00:00.000Z",
+      "end": "2027-01-01T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "886477c4-b2f6-4bbf-90db-9fcc2321e56f",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-01T15:00:00.000Z",
+      "end": "2027-01-02T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "e4a64507-434f-4169-aeb4-9fda225ea922",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-02T15:00:00.000Z",
+      "end": "2027-01-03T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "2d4fb3a7-e783-4787-b3ae-584dda6063a9",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-03T15:00:00.000Z",
+      "end": "2027-01-04T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "a10af5ce-22ec-40a6-85b7-b3e68c9dadfd",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-04T15:00:00.000Z",
+      "end": "2027-01-05T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "79016186-8a82-4cf7-abd5-03ad85bcd07f",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-05T15:00:00.000Z",
+      "end": "2027-01-06T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "be82faa2-f6b0-4b9b-bdfa-4813543637a4",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-06T15:00:00.000Z",
+      "end": "2027-01-07T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "72fde51f-b8fc-460b-9ce1-f1b67d7ca311",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-07T15:00:00.000Z",
+      "end": "2027-01-08T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "00d95d15-bdc4-4e0e-bc51-0dd7e8edf31a",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-08T15:00:00.000Z",
+      "end": "2027-01-09T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "dc49ec51-154c-4008-9aa1-dcf490b3591a",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-09T15:00:00.000Z",
+      "end": "2027-01-10T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "d8cf9472-31ba-4e87-929e-7cd00f6163c4",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-10T15:00:00.000Z",
+      "end": "2027-01-11T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "2f181596-beeb-47cd-b18d-747a70a5ec47",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-11T15:00:00.000Z",
+      "end": "2027-01-12T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "1158d191-609f-4489-8356-fd777d0613eb",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-12T15:00:00.000Z",
+      "end": "2027-01-13T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "0fc2c8f7-bf7b-43e3-ab1f-b4cb7b52e3c2",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-13T15:00:00.000Z",
+      "end": "2027-01-14T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "a732007c-5769-4a91-9920-c6d0e2bfec52",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-14T15:00:00.000Z",
+      "end": "2027-01-15T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "4f27743d-0ea0-452b-b15c-a1b50e489f19",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-15T15:00:00.000Z",
+      "end": "2027-01-16T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "dbd5d62c-8feb-4b03-8763-368c1279b9ab",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-16T15:00:00.000Z",
+      "end": "2027-01-17T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "fd564cd7-be1b-4e55-b1ef-8a387362e9cd",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-17T15:00:00.000Z",
+      "end": "2027-01-18T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "7b59cbb7-1bee-458c-97d7-db6fd1e1fcb7",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-18T15:00:00.000Z",
+      "end": "2027-01-19T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "56c07cda-5e60-4cf8-a2b5-ced16efb83fa",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-19T15:00:00.000Z",
+      "end": "2027-01-20T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "789ee4e5-940a-460e-a946-03422d8b0d06",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-20T15:00:00.000Z",
+      "end": "2027-01-21T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "e82ef9f1-fe50-452d-b12b-fb3493f8269d",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-21T15:00:00.000Z",
+      "end": "2027-01-22T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "424ce6c7-9c20-4a4a-8b4c-85658fd9e2ec",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-22T15:00:00.000Z",
+      "end": "2027-01-23T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "7dc8d92a-15e3-4ae9-843e-28378d629101",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-23T15:00:00.000Z",
+      "end": "2027-01-24T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "17162de2-58ce-4959-a7a8-03e3b1ebf428",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-24T15:00:00.000Z",
+      "end": "2027-01-25T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "84b5b694-10a2-421c-9d00-5f133b9d7732",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-25T15:00:00.000Z",
+      "end": "2027-01-26T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "92d000fb-1020-4966-979d-0e6b0d3ff348",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-26T15:00:00.000Z",
+      "end": "2027-01-27T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "6cd94e0c-6169-4160-84ec-a10bce538b91",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-27T15:00:00.000Z",
+      "end": "2027-01-28T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "fdc7104d-0299-4a29-a90d-ed62b716fc4b",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-28T15:00:00.000Z",
+      "end": "2027-01-29T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "b8a3e414-d640-465b-b94c-b28ed869fbe0",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-29T15:00:00.000Z",
+      "end": "2027-01-30T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "a08b11ac-c980-4289-b3f7-d9ef14e60e4c",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-30T15:00:00.000Z",
+      "end": "2027-01-31T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    },
+    {
+      "id": "78be5413-8448-4cd0-89fe-329852844a06",
+      "guestName": "Ingoibibo",
+      "start": "2027-01-31T15:00:00.000Z",
+      "end": "2027-02-01T15:00:00.000Z",
+      "summary": "Ingoibibo (Not Available)",
+      "source": "MakeMyTrip / Goibibo"
+    }
+  ],
+  "tvs": [
+    {
+      "id": "living-room",
+      "name": "Living Room TV",
+      "room": "Living Room",
+      "lastSeen": "2026-11-10T14:17:26.184Z",
+      "status": "online"
+    },
+    {
+      "id": "master-bedroom",
+      "name": "Master Suite TV",
+      "room": "Master Bedroom",
+      "lastSeen": "2026-11-10T07:30:42.105Z",
+      "status": "idle"
+    }
+  ]
+}
