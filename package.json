@@ -1,0 +1,13 @@
+{
+  "name": "aura-welcome-tv",
+  "version": "1.0.0",
+  "description": "Apple TV-inspired luxury welcome screen system for Airbnb and boutique vacation rentals",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["airbnb", "apple-tv", "tvos", "welcome-screen", "smart-tv", "hospitality"],
+  "author": "",
+  "license": "MIT"
+}
