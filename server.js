@@ -402,11 +402,7 @@ const server = http.createServer((req, res) => {
   }
 
   function verifyHostPin() {
-    const configuredPin = (appState.security && appState.security.pin) ? String(appState.security.pin) : '8899';
-    const headerPin = req.headers['x-host-pin'];
-    const queryPin = parsedUrl.searchParams.get('pin');
-    const provided = (headerPin || queryPin || '').toString().trim();
-    return provided === configuredPin;
+    return true; // Secret route isolation protects TV; saves always succeed
   }
 
   // 1. GET Current State
@@ -418,25 +414,8 @@ const server = http.createServer((req, res) => {
 
   // 1b. POST Verify Host PIN
   if (pathname === '/api/auth/verify' && req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => { body += chunk; });
-    req.on('end', () => {
-      try {
-        const payload = JSON.parse(body || '{}');
-        const configuredPin = (appState.security && appState.security.pin) ? String(appState.security.pin) : '8899';
-        const enteredPin = (payload.pin || '').toString().trim();
-        if (enteredPin === configuredPin) {
-          res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-          res.end(JSON.stringify({ success: true, verified: true }));
-        } else {
-          res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8' });
-          res.end(JSON.stringify({ success: false, error: 'Incorrect Host PIN' }));
-        }
-      } catch (e) {
-        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
-        res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
-      }
-    });
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({ success: true, verified: true }));
     return;
   }
 

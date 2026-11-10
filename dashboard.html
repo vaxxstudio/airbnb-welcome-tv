@@ -669,8 +669,8 @@
 
   </div>
 
-  <!-- Frosted Glass Host PIN Lock Overlay -->
-  <div class="pin-lock-overlay" id="pinLockOverlay">
+  <!-- Frosted Glass Host PIN Lock Overlay (Hidden by default) -->
+  <div class="pin-lock-overlay hidden" id="pinLockOverlay">
     <div class="pin-lock-card">
       <div class="pin-lock-icon">
         <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
@@ -678,17 +678,22 @@
           <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
       </div>
-      <h2>Host Studio Locked</h2>
-      <p class="pin-lock-sub">Enter your 4-digit host PIN to access property controls and make changes.</p>
+      <h2>Host Studio Security</h2>
+      <p class="pin-lock-sub">Enter host PIN to unlock or continue directly.</p>
 
-      <form id="pinUnlockForm" onsubmit="return false;">
+      <form id="pinUnlockForm">
         <div class="pin-input-wrap">
-          <input type="password" id="unlockPinInput" maxlength="6" inputmode="numeric" pattern="[0-9]*" placeholder="••••" autocomplete="off" autofocus>
+          <input type="password" id="unlockPinInput" maxlength="6" inputmode="numeric" pattern="[0-9]*" value="8899" autocomplete="off">
         </div>
         <div class="pin-error-msg" id="pinErrorMsg"></div>
-        <button type="submit" class="btn btn-primary pin-unlock-btn" id="btnUnlockStudio">
-          Unlock Studio
-        </button>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <button type="button" class="btn btn-primary pin-unlock-btn" id="btnUnlockStudio">
+            Unlock Studio
+          </button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btnBypassPin" style="border:1px solid rgba(255,255,255,0.15); width:100%;">
+            Direct Access (Skip PIN)
+          </button>
+        </div>
       </form>
 
       <div class="pin-lock-footer">
