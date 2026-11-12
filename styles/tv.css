@@ -933,87 +933,258 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 }
 
 /* =============================================================
-   Responsive scaling for Android TV WebView (1080p @ 320dpi)
+   Responsive scaling for Android TV WebView (1080p @ 320dpi / 960x540 viewport)
    ============================================================= */
 @media screen and (max-width: 1366px), screen and (max-height: 768px) {
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
   .tv-viewport {
-    padding: 24px 44px 22px 44px;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 18px 40px 14px 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
   }
-  .apple-main-stage {
-    grid-template-columns: 1fr 340px;
-    gap: 36px;
-    margin: 12px 0;
+
+  /* Header Bar */
+  .apple-header-bar {
+    padding: 0;
+    flex-shrink: 0;
   }
-  .apple-welcome-heading {
-    font-size: 42px;
-    margin-bottom: 8px;
+  .brand-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
   }
-  .apple-welcome-subline {
-    font-size: 14.5px;
-    line-height: 1.45;
-  }
-  .apple-stay-capsule {
-    padding: 12px 20px;
-    margin-bottom: 22px;
-    gap: 22px;
-  }
-  .capsule-dates-val {
-    font-size: 14px;
-  }
-  .apple-amenities-row {
-    gap: 26px;
-  }
-  .amenity-svg-box svg {
-    width: 24px;
-    height: 24px;
-  }
-  .amenity-item-title {
-    font-size: 13.5px;
-  }
-  .apple-right-column {
-    width: 340px;
-    gap: 14px;
-  }
-  .apple-wifi-card {
-    padding: 18px 22px;
-    border-radius: 20px;
-  }
-  .wifi-card-header {
-    margin-bottom: 12px;
-    gap: 10px;
-  }
-  .wifi-header-title {
+  .brand-prop-name {
     font-size: 17px;
   }
-  .wifi-qr-container {
+  .brand-meta-line {
+    font-size: 11.5px;
+  }
+  .brand-city-tag {
+    font-size: 10.5px;
+    padding: 2px 7px;
+  }
+  .header-actions-pill {
+    padding: 3px 8px;
+    gap: 6px;
+  }
+  .btn-action-round {
+    width: 26px;
+    height: 26px;
+  }
+  .btn-action-round svg {
+    width: 14px;
+    height: 14px;
+  }
+  .apple-clock {
+    font-size: 19px;
+  }
+
+  /* Main Stage */
+  .apple-main-stage {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    gap: 28px;
+    align-items: center;
+    margin: 6px 0;
+  }
+
+  /* Left Column */
+  .apple-welcome-heading {
+    font-size: 36px;
+    margin-bottom: 6px;
+    line-height: 1.15;
+  }
+  .apple-welcome-sub {
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+  .apple-host-signoff {
+    font-size: 13.5px;
+    margin-top: 4px;
+  }
+  .greeting-container {
+    margin-bottom: 12px;
+  }
+
+  .apple-stay-capsule {
+    padding: 9px 16px;
     margin-bottom: 14px;
+    gap: 16px;
+    border-radius: 16px;
+  }
+  .capsule-icon-box svg {
+    width: 18px;
+    height: 18px;
+  }
+  .capsule-tag-label {
+    font-size: 10.5px;
+  }
+  .capsule-dates-val {
+    font-size: 13px;
+  }
+  .capsule-nights-sub {
+    font-size: 10.5px;
+  }
+
+  .apple-amenities-row {
+    gap: 18px;
+  }
+  .amenity-svg-box {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 4px;
+  }
+  .amenity-svg-box svg {
+    width: 20px;
+    height: 20px;
+  }
+  .amenity-item-title {
+    font-size: 12px;
+  }
+  .amenity-item-sub {
+    font-size: 10.5px;
+  }
+
+  /* Right Column (Wi-Fi + Weather) */
+  .apple-right-column {
+    width: 310px;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .apple-wifi-card {
+    padding: 12px 16px;
+    border-radius: 16px;
+  }
+  .wifi-card-header {
+    margin-bottom: 6px;
+    gap: 8px;
+  }
+  .wifi-header-icon {
+    width: 22px;
+    height: 22px;
+  }
+  .wifi-header-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .wifi-header-title {
+    font-size: 14.5px;
+  }
+  .wifi-header-sub {
+    font-size: 10.5px;
+  }
+
+  .wifi-qr-container {
+    margin-bottom: 8px;
   }
   .wifi-qr-squircle {
-    padding: 10px;
-    border-radius: 14px;
+    padding: 6px;
+    border-radius: 10px;
   }
   .qr-target-inner {
-    width: 116px;
-    height: 116px;
+    width: 96px;
+    height: 96px;
   }
   .qr-target-inner img,
   .qr-target-inner canvas {
-    width: 116px !important;
-    height: 116px !important;
+    width: 96px !important;
+    height: 96px !important;
   }
+
   .wifi-creds-container {
-    padding: 10px 14px;
+    padding: 6px 12px;
+    gap: 4px;
+    border-radius: 10px;
+  }
+  .cred-row {
+    font-size: 11.5px;
     gap: 8px;
-    border-radius: 12px;
   }
-  .wifi-detail-row {
-    font-size: 12.5px;
+  .cred-icon {
+    width: 14px;
+    height: 14px;
   }
+  .cred-icon svg {
+    width: 13px;
+    height: 13px;
+  }
+  .cred-label {
+    width: 58px;
+  }
+
+  /* Weather Card */
   .apple-weather-card {
-    padding: 14px 20px;
-    border-radius: 20px;
+    padding: 10px 16px 8px 16px;
+    border-radius: 16px;
   }
-  .weather-temp-now {
-    font-size: 34px;
+  .weather-current-row {
+    margin-bottom: 6px;
+  }
+  .weather-sun-glyph {
+    font-size: 22px;
+  }
+  .weather-now-temp, .weather-temp-now {
+    font-size: 26px;
+  }
+  .weather-now-location {
+    font-size: 11.5px;
+  }
+  .weather-forecast-shelf {
+    padding: 6px 0 4px 0;
+    gap: 4px;
+  }
+  .weather-day-item {
+    gap: 2px;
+  }
+  .weather-day-name {
+    font-size: 10px;
+  }
+  .weather-day-glyph {
+    font-size: 14px;
+    margin: 0;
+  }
+  .weather-day-range {
+    font-size: 10.5px;
+  }
+  .weather-attribution {
+    font-size: 9px;
+    margin-top: 2px;
+  }
+
+  /* Bottom Rules & Contact Footer */
+  .apple-bottom-bar {
+    padding-top: 8px;
+    flex-shrink: 0;
+  }
+  .apple-rules-pills {
+    gap: 8px;
+  }
+  .apple-rule-pill {
+    padding: 3px 8px;
+    font-size: 10.5px;
+    gap: 5px;
+    border-radius: 9999px;
+  }
+  .contact-chat-icon {
+    width: 14px;
+    height: 14px;
+  }
+  .contact-prefix, .contact-host-link {
+    font-size: 11px;
   }
 }

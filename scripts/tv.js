@@ -418,7 +418,8 @@ function renderScreen(data) {
   // 6. Host Contact Support
   const hostContactText = document.getElementById('hostContactText');
   if (hostContactText) {
-    hostContactText.textContent = prop.hostContact || "Message Wasim on the Airbnb app";
+    const rawContact = (prop.hostContact || '').replace(/wasim/gi, prop.hostName || 'Gautham').trim();
+    hostContactText.textContent = rawContact || `Message ${prop.hostName || 'Gautham'} on the Airbnb app`;
   }
 
   // 7. Screensaver
