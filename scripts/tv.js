@@ -328,9 +328,15 @@ function renderScreen(data) {
   if (propNameTitle) propNameTitle.textContent = prop.name || 'Comfort Stay near CyberHub';
   if (propMetaLine) {
     const rawMeta = prop.metaSubtitle || '1BHK · 300 MBPS WI-FI';
-    propMetaLine.textContent = rawMeta.replace(/·\s*GURUGRAM/gi, '').trim();
+    const loc = (prop.location || 'THEKKADY').trim();
+    const cleanMeta = rawMeta
+      .replace(/·\s*GURUGRAM/gi, '')
+      .replace(new RegExp(`·\\s*${loc}`, 'gi'), '')
+      .replace(/·\s*THEKKADY/gi, '')
+      .trim();
+    propMetaLine.textContent = cleanMeta || '1BHK · 300 MBPS WI-FI';
   }
-  if (propCityTag) propCityTag.textContent = (prop.location || 'GURUGRAM').toUpperCase();
+  if (propCityTag) propCityTag.textContent = (prop.location || 'THEKKADY').toUpperCase();
 
   // 2. Main Greeting & Mode (Welcome vs Checkout)
   const grandHeadline = document.getElementById('grandHeadline');

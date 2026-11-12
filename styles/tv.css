@@ -931,3 +931,89 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
+
+/* =============================================================
+   Responsive scaling for Android TV WebView (1080p @ 320dpi)
+   ============================================================= */
+@media screen and (max-width: 1366px), screen and (max-height: 768px) {
+  .tv-viewport {
+    padding: 24px 44px 22px 44px;
+  }
+  .apple-main-stage {
+    grid-template-columns: 1fr 340px;
+    gap: 36px;
+    margin: 12px 0;
+  }
+  .apple-welcome-heading {
+    font-size: 42px;
+    margin-bottom: 8px;
+  }
+  .apple-welcome-subline {
+    font-size: 14.5px;
+    line-height: 1.45;
+  }
+  .apple-stay-capsule {
+    padding: 12px 20px;
+    margin-bottom: 22px;
+    gap: 22px;
+  }
+  .capsule-dates-val {
+    font-size: 14px;
+  }
+  .apple-amenities-row {
+    gap: 26px;
+  }
+  .amenity-svg-box svg {
+    width: 24px;
+    height: 24px;
+  }
+  .amenity-item-title {
+    font-size: 13.5px;
+  }
+  .apple-right-column {
+    width: 340px;
+    gap: 14px;
+  }
+  .apple-wifi-card {
+    padding: 18px 22px;
+    border-radius: 20px;
+  }
+  .wifi-card-header {
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+  .wifi-header-title {
+    font-size: 17px;
+  }
+  .wifi-qr-container {
+    margin-bottom: 14px;
+  }
+  .wifi-qr-squircle {
+    padding: 10px;
+    border-radius: 14px;
+  }
+  .qr-target-inner {
+    width: 116px;
+    height: 116px;
+  }
+  .qr-target-inner img,
+  .qr-target-inner canvas {
+    width: 116px !important;
+    height: 116px !important;
+  }
+  .wifi-creds-container {
+    padding: 10px 14px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+  .wifi-detail-row {
+    font-size: 12.5px;
+  }
+  .apple-weather-card {
+    padding: 14px 20px;
+    border-radius: 20px;
+  }
+  .weather-temp-now {
+    font-size: 34px;
+  }
+}
