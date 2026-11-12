@@ -388,6 +388,24 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
+  // 1. Force HTTPS on cloud reverse proxies (Render, Cloudflare, AWS, etc.)
+  const forwardedProto = req.headers['x-forwarded-proto'];
+  if (forwardedProto && forwardedProto !== 'https') {
+    const host = req.headers.host;
+    res.writeHead(301, {
+      'Location': `https://${host}${req.url}`,
+      'Strict-Transport-Security': 'max-age=31536000; includeSubDomains'
+    });
+    res.end();
+    return;
+  }
+
+  // 2. Security Headers (Eliminates mobile browser security warnings)
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+
   const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
   const pathname = parsedUrl.pathname;
 

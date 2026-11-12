@@ -1098,3 +1098,321 @@ body {
 .pin-lock-footer strong {
   color: #ffffff;
 }
+
+/* =============================================================
+   Mobile & Tablet Pro Styling (iOS / Android Responsive)
+   ============================================================= */
+
+/* Hidden by default on Desktop */
+.mobile-top-bar,
+.mobile-nav-bar,
+.mobile-bottom-bar {
+  display: none;
+}
+
+/* -------------------------------------------------------------
+   Tablet & Mobile Screens (<= 1024px)
+   ------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .dash-layout {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Mobile Top App Bar */
+  .mobile-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: rgba(14, 18, 27, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 800;
+  }
+
+  .mob-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mob-brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mob-brand-text strong {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+
+  .mob-brand-text span {
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .mob-top-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Mobile Category Quick-Jump Strip */
+  .mobile-nav-bar {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #0d1017;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: sticky;
+    top: 54px;
+    z-index: 750;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .mobile-nav-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mob-nav-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-sub);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    flex-shrink: 0;
+  }
+
+  .mob-nav-pill:active,
+  .mob-nav-pill.active {
+    background: var(--accent);
+    color: #10141d;
+    border-color: var(--accent);
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+  }
+
+  /* Slide-out Sidebar Drawer */
+  .dash-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 285px;
+    z-index: 1000;
+    transform: translateX(-105%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+  }
+
+  .dash-sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Main Canvas */
+  .dash-main {
+    padding: 16px 14px 105px 14px;
+    max-width: 100%;
+  }
+
+  .dash-topbar {
+    display: none;
+  }
+
+  /* Stacked 1-Column Layout */
+  .dash-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .form-column {
+    width: 100%;
+  }
+
+  .preview-column {
+    position: static;
+    order: 2;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  /* Sticky Bottom Floating Action Bar */
+  .mobile-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    background: rgba(14, 18, 27, 0.96);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 12px 16px;
+    box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.6);
+  }
+
+  .mob-bar-status-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mob-bar-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #10b981;
+  }
+
+  .mob-push-btn {
+    height: 44px;
+    padding: 0 24px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.45);
+  }
+}
+
+/* -------------------------------------------------------------
+   Smartphone Screens (<= 680px)
+   ------------------------------------------------------------- */
+@media (max-width: 680px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .card-panel {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .panel-title {
+    margin-bottom: 16px;
+  }
+
+  .panel-title h3 {
+    font-size: 1.02rem;
+  }
+
+  /* iOS Auto-Zoom Prevention: 16px font-size */
+  .input, .textarea, .select {
+    font-size: 16px;
+    min-height: 48px;
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  .field label {
+    font-size: 0.82rem;
+  }
+
+  .theme-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .theme-preview-box {
+    height: 46px;
+  }
+
+  /* Repeater items stacked for mobile */
+  .repeater-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .repeater-item .input {
+    width: 100% !important;
+    flex: none !important;
+  }
+
+  .repeater-item .btn-icon {
+    align-self: flex-end;
+    padding: 6px 14px;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-radius: 6px;
+    font-size: 0.8rem;
+  }
+
+  /* Upload rows stacked */
+  .input-upload-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .btn-upload {
+    width: 100%;
+    justify-content: center;
+    height: 44px;
+  }
+
+  /* Calendar Widget Mobile Polish */
+  .stay-cal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stay-cal-actions {
+    align-self: flex-end;
+  }
+
+  .stay-cal-day {
+    min-height: 35px;
+    font-size: 0.82rem;
+  }
+
+  .stay-cal-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* TV Bezel Simulator fits nicely */
+  .tv-bezel {
+    border-radius: 14px;
+    padding: 6px;
+  }
+
+  /* PIN Modal */
+  .pin-lock-card {
+    padding: 28px 20px 22px 20px;
+    border-radius: 20px;
+  }
+
+  .pin-input-wrap input {
+    width: 170px;
+    font-size: 24px;
+  }
+}

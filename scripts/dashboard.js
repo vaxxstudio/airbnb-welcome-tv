@@ -643,9 +643,34 @@ function setupEventListeners() {
     showToast('✨ Master All-in-One iCal link copied!');
   });
 
-  // Save / Push button
-  document.getElementById('btnSavePush')?.addEventListener('click', () => {
-    pushLiveUpdate(false);
+  // Save / Push button (Desktop & Mobile)
+  const triggerSave = () => pushLiveUpdate(false);
+  document.getElementById('btnSavePush')?.addEventListener('click', triggerSave);
+  document.getElementById('btnSavePushMobile')?.addEventListener('click', triggerSave);
+
+  // Mobile sidebar drawer toggle
+  const sidebar = document.getElementById('dashSidebar');
+  const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+  if (btnToggleSidebar && sidebar) {
+    btnToggleSidebar.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+  }
+
+  // Close sidebar on link click (mobile)
+  sidebar?.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  });
+
+  // Mobile nav pills horizontal strip
+  const mobPills = document.querySelectorAll('.mob-nav-pill');
+  mobPills.forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      mobPills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
   });
 
   // Sync All Calendars Now button

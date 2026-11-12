@@ -31,14 +31,27 @@ let currentWallpaperIdx = 0;
 let activeBackdrop = 'A';
 let wallpaperInterval = null;
 
+// Cloud Sync Target (Allows offline asset to sync live with cloud updates)
+const CLOUD_SYNC_URL = 'https://airbnb-welcome-tv-1.onrender.com';
+const API_BASE = (window.location.protocol === 'file:' || !window.location.origin || window.location.origin === 'null')
+  ? CLOUD_SYNC_URL
+  : window.location.origin;
+
 document.addEventListener('DOMContentLoaded', () => {
   initClock();
-  generateWifiQr('Comfort Stay Guest', 'GuestWiFi@123', 'WPA');
   setupWallpaperRotator();
   setupCardsAndAmenities();
   setupModals();
   setupDpadNavigation();
   setupScreensaver();
+
+  // 1. Instantly hydrate from local data.json (under 10ms - zero wait)
+  fetch('data.json')
+    .then(r => r.json())
+    .then(data => renderScreen(data))
+    .catch(() => {});
+
+  // 2. Connect live background cloud sync
   startHeartbeat();
   connectLiveSync();
 });
@@ -83,7 +96,7 @@ function setupWallpaperRotator() {
 // -------------------------------------------------------------
 function startHeartbeat() {
   function sendBeat() {
-    fetch(`/api/heartbeat?tv=${encodeURIComponent(tvId)}&room=${encodeURIComponent(roomName)}`)
+    fetch(`${API_BASE}/api/heartbeat?tv=${encodeURIComponent(tvId)}&room=${encodeURIComponent(roomName)}`)
       .catch(() => {});
   }
   sendBeat();
@@ -689,28 +702,35 @@ function setupScreensaver() {
 }
 
 // -------------------------------------------------------------
-// Live SSE Sync with Host Studio
+// Live Cloud & Host Studio Sync
 // -------------------------------------------------------------
 function connectLiveSync() {
-  fetch('/api/data')
-    .then(r => r.json())
-    .then(data => renderScreen(data))
-    .catch(err => console.error('Initial data fetch error:', err));
+  function syncNow() {
+    fetch(`${API_BASE}/api/data`)
+      .then(r => r.json())
+      .then(data => renderScreen(data))
+      .catch(err => console.log('Cloud sync pending...', err));
+  }
 
-  if (typeof EventSource !== 'undefined') {
-    const sse = new EventSource('/api/events');
-    sse.onmessage = (event) => {
-      try {
-        const payload = JSON.parse(event.data);
-        const data = (payload && (payload.property || payload.guest || payload.wifi)) ? payload : (payload.data || payload);
-        renderScreen(data);
-      } catch (e) {
-        console.error('SSE message error:', e);
-      }
-    };
-    sse.onerror = () => {
-      setTimeout(connectLiveSync, 8000);
-    };
+  syncNow();
+  setInterval(syncNow, 15000);
+
+  if (typeof EventSource !== 'undefined' && API_BASE.startsWith('http')) {
+    try {
+      const sse = new EventSource(`${API_BASE}/api/events`);
+      sse.onmessage = (event) => {
+        try {
+          const payload = JSON.parse(event.data);
+          const data = (payload && (payload.property || payload.guest || payload.wifi)) ? payload : (payload.data || payload);
+          renderScreen(data);
+        } catch (e) {
+          console.error('SSE message error:', e);
+        }
+      };
+      sse.onerror = () => {
+        sse.close();
+      };
+    } catch (e) {}
   }
 }
 
