@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#07090d">
+  <title>The Zenest — Mobile Host Studio</title>
+  <link rel="stylesheet" href="styles/mobile.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Backgrounds -->
+  <div class="mob-bg-glow"></div>
+  <div class="mob-bg-glow-bottom"></div>
+
+  <div class="mob-app-shell">
+
+    <!-- Top App Header -->
+    <header class="mob-header">
+      <div class="mob-header-left">
+        <div class="mob-brand-badge">
+          <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+        </div>
+        <div class="mob-brand-meta">
+          <h1 id="mobPropHeaderTitle">The Zenest</h1>
+          <div class="mob-tv-status-chip">
+            <span class="status-dot-pulse"></span>
+            <span id="mobTvStatusText">TV Live Connected</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mob-header-right">
+        <a class="btn-header-link" href="/" target="_blank" title="Preview TV Screen">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+          TV
+        </a>
+      </div>
+    </header>
+
+    <!-- Screen Mode Segmented Control (Quick 1-Tap Switch) -->
+    <div class="mob-mode-switcher-wrap">
+      <div class="mob-segmented-bar" id="mobSegmentedMode">
+        <button type="button" class="mob-segment-btn active" data-mode="welcome">✨ Welcome</button>
+        <button type="button" class="mob-segment-btn" data-mode="checkout">📤 Check-out</button>
+        <button type="button" class="mob-segment-btn" data-mode="between_guests">🌿 Standby</button>
+      </div>
+    </div>
+
+    <!-- Main Content Tab Pages -->
+    <main class="mob-content-body">
+
+      <!-- =======================================================
+           TAB 1: GUEST & STAY (Most Used by Hosts)
+           ======================================================= -->
+      <section class="mob-tab-page active" id="tabGuest">
+        
+        <!-- Current Guest Card -->
+        <div class="mob-card">
+          <div class="mob-card-header">
+            <div class="mob-card-title">
+              <span>👤</span> Guest Information
+            </div>
+            <span class="mob-badge">Live on Screen</span>
+          </div>
+
+          <div class="mob-field-group">
+            <div class="mob-field">
+              <label class="mob-label" for="mobGuestName">Guest Full Name(s)</label>
+              <div class="mob-input-with-icon">
+                <span class="mob-field-icon">👋</span>
+                <input class="mob-input" type="text" id="mobGuestName" placeholder="e.g. Theertha, Rahul & Priya">
+              </div>
+            </div>
+
+            <div class="mob-row-2">
+              <div class="mob-field">
+                <label class="mob-label" for="mobCheckIn">Check-in</label>
+                <input class="mob-input" type="text" id="mobCheckIn" placeholder="Wed 7 Nov">
+              </div>
+              <div class="mob-field">
+                <label class="mob-label" for="mobCheckOut">Check-out</label>
+                <input class="mob-input" type="text" id="mobCheckOut" placeholder="Thu 8 Nov">
+              </div>
+            </div>
+
+            <!-- Quick Date Chips -->
+            <div class="mob-chips-shelf">
+              <button type="button" class="mob-chip-pill" id="chipTonight">Tonight (1 night)</button>
+              <button type="button" class="mob-chip-pill" id="chipWeekend">This Weekend (2n)</button>
+              <button type="button" class="mob-chip-pill" id="chipNextWeek">Next 3 Nights</button>
+            </div>
+
+            <div class="mob-field">
+              <label class="mob-label" for="mobCheckoutTime">Check-out Time</label>
+              <input class="mob-input" type="text" id="mobCheckoutTime" placeholder="11:00 AM">
+            </div>
+          </div>
+        </div>
+
+        <!-- Personal Welcome Note Card -->
+        <div class="mob-card">
+          <div class="mob-card-header">
+            <div class="mob-card-title">
+              <span>💬</span> Welcome Message
+            </div>
+          </div>
+
+          <div class="mob-field-group">
+            <div class="mob-field">
+              <textarea class="mob-textarea" id="mobWelcomeNote" placeholder="Personal message shown on the TV..."></textarea>
+            </div>
+
+            <!-- Suggestion Chips for Fast Typing -->
+            <div class="mob-chips-shelf">
+              <button type="button" class="mob-chip-pill" data-msg="Make yourself at home. If you need anything, message me on Airbnb.">🏠 "Make yourself at home"</button>
+              <button type="button" class="mob-chip-pill" data-msg="Welcome to Thekkady! Enjoy the misty mountain views and peaceful spice gardens.">🌿 "Misty mountain views"</button>
+              <button type="button" class="mob-chip-pill" data-msg="Complimentary tea & coffee in the kitchen. Wi-Fi QR code is ready on the right!">☕ "Complimentary tea"</button>
+            </div>
+
+            <div class="mob-field" style="margin-top: 4px;">
+              <label class="mob-label" for="mobHostSignoff">Host Sign-off</label>
+              <input class="mob-input" type="text" id="mobHostSignoff" placeholder="– Gautham">
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =======================================================
+           TAB 2: WI-FI SETUP & LIVE QR PREVIEW
+           ======================================================= -->
+      <section class="mob-tab-page" id="tabWifi">
+        
+        <div class="mob-card">
+          <div class="mob-card-header">
+            <div class="mob-card-title">
+              <span>📶</span> Wi-Fi Network Details
+            </div>
+            <span class="mob-badge">Auto QR</span>
+          </div>
+
+          <div class="mob-field-group">
+            <div class="mob-field">
+              <label class="mob-label" for="mobWifiSsid">Wi-Fi Network Name (SSID)</label>
+              <div class="mob-input-with-icon">
+                <span class="mob-field-icon">📡</span>
+                <input class="mob-input" type="text" id="mobWifiSsid" placeholder="e.g. Vellara">
+              </div>
+            </div>
+
+            <div class="mob-field">
+              <label class="mob-label" for="mobWifiPass">Wi-Fi Password</label>
+              <div class="mob-input-with-icon">
+                <span class="mob-field-icon">🔑</span>
+                <input class="mob-input" type="text" id="mobWifiPass" placeholder="e.g. vhome@123">
+              </div>
+            </div>
+
+            <!-- Live Phone QR Mockup -->
+            <div class="mob-wifi-preview-box">
+              <div class="mob-qr-squircle" id="mobQrTarget">
+                <!-- QR Code rendered dynamically -->
+              </div>
+              <div class="mob-wifi-creds-preview">
+                <strong id="mobPreviewSsid">Vellara</strong>
+                <span id="mobPreviewPass">Pass: vhome@123</span>
+                <small style="color:#10b981; font-weight:600; font-size:11px;">✓ Guests scan TV to join</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =======================================================
+           TAB 3: VILLA & HOUSE RULES
+           ======================================================= -->
+      <section class="mob-tab-page" id="tabVilla">
+        
+        <div class="mob-card">
+          <div class="mob-card-header">
+            <div class="mob-card-title">
+              <span>🏠</span> Villa & Host Details
+            </div>
+          </div>
+
+          <div class="mob-field-group">
+            <div class="mob-field">
+              <label class="mob-label" for="mobPropName">Property / Villa Name</label>
+              <input class="mob-input" type="text" id="mobPropName" placeholder="e.g. The Zenest">
+            </div>
+
+            <div class="mob-row-2">
+              <div class="mob-field">
+                <label class="mob-label" for="mobPropLoc">Location / City</label>
+                <input class="mob-input" type="text" id="mobPropLoc" placeholder="e.g. Thekkady">
+              </div>
+              <div class="mob-field">
+                <label class="mob-label" for="mobHostName">Host Name</label>
+                <input class="mob-input" type="text" id="mobHostName" placeholder="e.g. Gautham">
+              </div>
+            </div>
+
+            <div class="mob-field">
+              <label class="mob-label" for="mobHostContact">Host Contact Line</label>
+              <input class="mob-input" type="text" id="mobHostContact" placeholder="Message Gautham on the Airbnb app">
+            </div>
+          </div>
+        </div>
+
+        <!-- House Rules -->
+        <div class="mob-card">
+          <div class="mob-card-header">
+            <div class="mob-card-title">
+              <span>📋</span> House Rules on TV
+            </div>
+          </div>
+
+          <div class="mob-rules-list" id="mobRulesList">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =======================================================
+           TAB 4: STYLE & TV STATUS
+           ======================================================= -->
+      <section class="mob-tab-page" id="tabDesign">
+        
+        <div class="mob-card">
+          <div class="mob-card-header">
+            <div class="mob-card-title">
+              <span>🎨</span> TV Color Theme
+            </div>
+          </div>
+
+          <div class="mob-palettes-grid" id="mobPalettesGrid">
+            <div class="mob-palette-card active" data-palette="landscape_mountain">
+              <div class="mob-palette-dot" style="background:#22c55e;"></div>
+              <span class="mob-palette-label">Mountain Pine</span>
+            </div>
+            <div class="mob-palette-card" data-palette="apple_gold">
+              <div class="mob-palette-dot" style="background:#d4af37;"></div>
+              <span class="mob-palette-label">Apple Gold</span>
+            </div>
+            <div class="mob-palette-card" data-palette="dark_obsidian">
+              <div class="mob-palette-dot" style="background:#3b82f6;"></div>
+              <span class="mob-palette-label">Dark Obsidian</span>
+            </div>
+            <div class="mob-palette-card" data-palette="warm_sunset">
+              <div class="mob-palette-dot" style="background:#f97316;"></div>
+              <span class="mob-palette-label">Warm Sunset</span>
+            </div>
+            <div class="mob-palette-card" data-palette="coastal_blue">
+              <div class="mob-palette-dot" style="background:#06b6d4;"></div>
+              <span class="mob-palette-label">Coastal Blue</span>
+            </div>
+            <div class="mob-palette-card" data-palette="midnight_purple">
+              <div class="mob-palette-dot" style="background:#a855f7;"></div>
+              <span class="mob-palette-label">Midnight Luxe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TV System Status -->
+        <div class="mob-card">
+          <div class="mob-card-header">
+            <div class="mob-card-title">
+              <span>📺</span> Connected Televisions
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:rgba(0,0,0,0.3); border-radius:10px;">
+              <div>
+                <strong style="font-size:0.9rem; color:#fff;">Living Room TV (Vu 4K)</strong>
+                <div style="font-size:0.75rem; color:#10b981;">Online · Auto-Sync Active</div>
+              </div>
+              <a href="/?tv=living-room" target="_blank" style="padding:6px 12px; font-size:0.75rem; background:rgba(255,255,255,0.1); border-radius:8px; color:#fff; text-decoration:none;">View</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Switch to PC Console -->
+        <div class="mob-pc-switch-footer">
+          Need advanced multi-OTA iCal feeds?
+          <br>
+          <a href="/dashboard.html?mode=desktop">Switch to PC Studio Console</a>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Floating Thumb Action Button (Always Accessible with 1 Touch) -->
+    <div class="mob-floating-action-bar">
+      <button type="button" class="mob-push-btn-main" id="btnMobPushMain">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        <span>Push Changes to TV Live</span>
+      </button>
+    </div>
+
+    <!-- Bottom Tab Navigation Bar (iOS Standard 4 Tabs) -->
+    <nav class="mob-bottom-tabs">
+      <button type="button" class="mob-tab-btn active" data-tab="tabGuest">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        <span>Guest</span>
+      </button>
+
+      <button type="button" class="mob-tab-btn" data-tab="tabWifi">
+        <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/></svg>
+        <span>Wi-Fi</span>
+      </button>
+
+      <button type="button" class="mob-tab-btn" data-tab="tabVilla">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Villa</span>
+      </button>
+
+      <button type="button" class="mob-tab-btn" data-tab="tabDesign">
+        <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.22 19.64 10.56 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/></svg>
+        <span>Style</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- Floating Success Confirmation Toast -->
+  <div class="mob-toast" id="mobToast">
+    <span>✓</span>
+    <span id="mobToastText">Pushed to TV Live!</span>
+  </div>
+
+  <script src="scripts/qrcode.min.js"></script>
+  <script src="scripts/mobile.js"></script>
+</body>
+</html>

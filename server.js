@@ -593,9 +593,18 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Static files & Host aliases
+  // Static files & Host aliases (Smart Mobile Detection & Dedicated Mobile Host App)
+  const userAgent = (req.headers['user-agent'] || '').toLowerCase();
+  const isMobile = /mobile|iphone|ipod|android.*mobile|windows phone|blackberry/i.test(userAgent);
+  const forceDesktop = parsedUrl.searchParams.get('mode') === 'desktop';
+  const forceMobile = parsedUrl.searchParams.get('mode') === 'mobile';
+
   let filePath = pathname === '/' ? '/index.html' : pathname;
-  if (filePath === '/dashboard' || filePath === '/host' || filePath === '/admin') filePath = '/dashboard.html';
+  if (filePath === '/mobile') {
+    filePath = '/mobile.html';
+  } else if (filePath === '/dashboard' || filePath === '/host' || filePath === '/admin') {
+    filePath = (isMobile || forceMobile) && !forceDesktop ? '/mobile.html' : '/dashboard.html';
+  }
   if (filePath === '/tv') filePath = '/index.html';
 
   const fullPath = path.join(__dirname, filePath);

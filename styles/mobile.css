@@ -1,0 +1,649 @@
+/* =====================================================================
+   The Zenest — Dedicated Host Mobile Companion Pro
+   Crafted specifically for smartphone touchscreens (iOS Safari & Android Chrome)
+   Liquid Glassmorphism • Dynamic Island Aesthetic • 0ms Lag
+   ===================================================================== */
+
+:root {
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  
+  --bg-deep: #07090d;
+  --bg-card: rgba(22, 27, 36, 0.72);
+  --bg-card-solid: #151a24;
+  --bg-card-hover: rgba(32, 38, 50, 0.85);
+  --bg-input: rgba(10, 13, 18, 0.85);
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(255, 255, 255, 0.12);
+  --border-focus: rgba(212, 175, 55, 0.6);
+  
+  --accent-gold: #d4af37;
+  --accent-gold-light: #f3d068;
+  --accent-gold-glow: rgba(212, 175, 55, 0.35);
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+  
+  --safe-bottom: env(safe-area-inset-bottom, 16px);
+  --safe-top: env(safe-area-inset-top, 16px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-system);
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Background Ambient Glow */
+.mob-bg-glow {
+  position: fixed;
+  top: -100px;
+  right: -50px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mob-bg-glow-bottom {
+  position: fixed;
+  bottom: 60px;
+  left: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* App Container */
+.mob-app-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(140px + var(--safe-bottom));
+}
+
+/* -------------------------------------------------------------
+   1. Header App Bar
+   ------------------------------------------------------------- */
+.mob-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 14, 20, 0.88);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: calc(var(--safe-top) + 8px) 16px 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mob-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mob-brand-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-gold);
+}
+
+.mob-brand-badge svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.mob-brand-meta h1 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.mob-tv-status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+.status-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+  animation: mobPulse 2s infinite;
+}
+
+@keyframes mobPulse {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.mob-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-pill);
+  color: var(--text-primary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------------
+   2. Screen Mode Segmented Switcher (iOS Style)
+   ------------------------------------------------------------- */
+.mob-mode-switcher-wrap {
+  padding: 12px 16px 4px 16px;
+}
+
+.mob-segmented-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.mob-segment-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 6px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.mob-segment-btn.active {
+  background: var(--accent-gold);
+  color: #10141d;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+}
+
+/* -------------------------------------------------------------
+   3. Content Tabs & Card Modules
+   ------------------------------------------------------------- */
+.mob-content-body {
+  padding: 12px 16px;
+}
+
+.mob-tab-page {
+  display: none;
+  animation: mobFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mob-tab-page.active {
+  display: block;
+}
+
+@keyframes mobFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mob-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px;
+  margin-bottom: 14px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.mob-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.mob-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mob-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--accent-gold);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Input Fields & Groups */
+.mob-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mob-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mob-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mob-input, .mob-textarea, .mob-select {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 16px; /* Prevents iOS auto-zoom */
+  font-family: inherit;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.mob-input:focus, .mob-textarea:focus, .mob-select:focus {
+  border-color: var(--accent-gold);
+  background: rgba(14, 18, 26, 0.95);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+.mob-input-with-icon {
+  position: relative;
+  width: 100%;
+}
+
+.mob-input-with-icon .mob-input {
+  padding-left: 38px;
+}
+
+.mob-field-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.mob-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mob-textarea {
+  min-height: 84px;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+/* Quick Suggestion Chips */
+.mob-chips-shelf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mob-chip-pill {
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mob-chip-pill:active {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+/* Wi-Fi Scannable Card Mockup */
+.mob-wifi-preview-box {
+  background: linear-gradient(145deg, #18202c, #0f131a);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.mob-qr-squircle {
+  width: 88px;
+  height: 88px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.mob-qr-squircle img, .mob-qr-squircle canvas {
+  width: 76px !important;
+  height: 76px !important;
+}
+
+.mob-wifi-creds-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.mob-wifi-creds-preview strong {
+  font-size: 0.95rem;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mob-wifi-creds-preview span {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-family: monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Color Palettes Grid */
+.mob-palettes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.mob-palette-card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 8px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mob-palette-card.active {
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.12);
+  box-shadow: 0 0 0 1px var(--accent-gold);
+}
+
+.mob-palette-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 0 auto 6px auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mob-palette-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* House Rules Simple Checklist */
+.mob-rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mob-rule-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.mob-rule-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.mob-rule-delete {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------
+   4. Floating Push Action Bar (Thumb Reach Zone)
+   ------------------------------------------------------------- */
+.mob-floating-action-bar {
+  position: fixed;
+  bottom: calc(62px + var(--safe-bottom));
+  left: 0;
+  right: 0;
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.mob-push-btn-main {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 440px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: linear-gradient(135deg, var(--accent-gold-light), var(--accent-gold));
+  color: #0f1318;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.45), 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mob-push-btn-main:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+}
+
+.mob-push-btn-main svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* -------------------------------------------------------------
+   5. Bottom Tab Bar Navigation (iOS Style)
+   ------------------------------------------------------------- */
+.mob-bottom-tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(11, 14, 20, 0.94);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border-top: 1px solid var(--border-subtle);
+  padding: 8px 12px calc(var(--safe-bottom) + 4px) 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mob-tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 4px 12px;
+}
+
+.mob-tab-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  transition: all 0.15s ease;
+}
+
+.mob-tab-btn.active {
+  color: var(--accent-gold);
+}
+
+.mob-tab-btn.active svg {
+  transform: scale(1.1);
+  fill: var(--accent-gold);
+}
+
+/* -------------------------------------------------------------
+   6. Toast Confirmation Overlay
+   ------------------------------------------------------------- */
+.mob-toast {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  z-index: 9999;
+  background: rgba(16, 185, 129, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.mob-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Footer Link to PC Desktop */
+.mob-pc-switch-footer {
+  text-align: center;
+  padding: 24px 16px 12px 16px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.mob-pc-switch-footer a {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  margin-left: 4px;
+}
