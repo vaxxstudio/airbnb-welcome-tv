@@ -8,6 +8,10 @@
   --font-display: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
 
+  /* Universal TV Title Safe Area (Overscan Protection for any TV screen size / model) */
+  --tv-safe-x: max(6.5vw, 56px);
+  --tv-safe-y: max(5vh, 26px);
+
   /* Apple TV Obsidian & Frosted Glass Palette */
   --bg-obsidian: #121417;
   --bg-obsidian-gradient: radial-gradient(circle at 65% 20%, #1d2127 0%, #111316 65%, #0b0c0e 100%);
@@ -104,17 +108,20 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 }
 
 /* =============================================================
-   2. 10-FOOT TV VIEWPORT CANVAS
+   2. 10-FOOT TV VIEWPORT CANVAS (Auto-adjusting Title Safe Area)
    ============================================================= */
 .tv-viewport {
   position: relative;
   z-index: 1;
   width: 100vw;
   height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 42px 64px 34px 64px;
+  padding: var(--tv-safe-y) var(--tv-safe-x);
   box-sizing: border-box;
 }
 
@@ -272,16 +279,18 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 }
 
 /* =============================================================
-   4. MAIN TWO-COLUMN STAGE (62% Left / 38% Right)
+   4. MAIN TWO-COLUMN STAGE (Fluid Auto-Adjusting Layout)
    ============================================================= */
 .apple-main-stage {
   flex: 1;
+  min-height: 0;
   display: grid;
-  grid-template-columns: 1fr 430px;
-  gap: 68px;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, clamp(280px, 28vw, 360px));
+  gap: clamp(18px, 3.2vw, 42px);
   align-items: center;
   width: 100%;
-  margin: 18px 0;
+  max-width: 100%;
+  margin: clamp(4px, 1.2vh, 14px) 0;
 }
 
 /* =============================================================
@@ -291,21 +300,27 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Headline & Host Subline */
 .greeting-container {
-  margin-bottom: 34px;
+  margin-bottom: clamp(10px, 2vh, 24px);
+  width: 100%;
 }
 
 .apple-welcome-heading {
   font-family: var(--font-display);
-  font-size: 54px;
+  font-size: clamp(26px, 3.4vw, 46px);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
   line-height: 1.15;
   color: var(--text-white);
-  margin-bottom: 12px;
+  margin-bottom: clamp(4px, 0.8vh, 8px);
+  word-break: break-word;
 }
 
 .guest-amber-name {
@@ -315,22 +330,40 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 
 .apple-welcome-sub {
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: clamp(12px, 1.1vw, 16px);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.45;
   color: var(--text-sub);
-  max-width: 680px;
-  margin-bottom: 8px;
+  max-width: 100%;
+  margin-bottom: clamp(3px, 0.6vh, 6px);
 }
 
 .apple-host-signoff {
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: clamp(11.5px, 1.05vw, 15px);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.88);
 }
 
 /* Stay & Checkout Capsule (Frosted Liquid Glass) */
+.apple-stay-capsule {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  background: rgba(30, 33, 38, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-radius: clamp(12px, 1.6vw, 18px);
+  padding: clamp(8px, 1.2vh, 12px) clamp(12px, 1.6vw, 22px);
+  gap: clamp(12px, 1.8vw, 24px);
+  backdrop-filter: blur(40px) saturate(160%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  transition: var(--transition);
+  cursor: pointer;
+  outline: none;
+  margin-bottom: clamp(10px, 1.8vh, 24px);
+}
 .apple-stay-capsule {
   display: inline-flex;
   align-items: center;
@@ -416,22 +449,26 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 .apple-amenities-row {
   display: flex;
   align-items: flex-start;
-  gap: 40px;
-  max-width: 720px;
+  gap: clamp(8px, 1.5vw, 22px);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .apple-amenity-item {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: clamp(3px, 0.6vh, 6px);
   cursor: pointer;
   outline: none;
   transition: var(--transition);
 }
 
 .amenity-svg-box {
-  width: 32px;
-  height: 32px;
+  width: clamp(26px, 2.4vw, 36px);
+  height: clamp(26px, 2.4vw, 36px);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -440,24 +477,30 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 }
 
 .amenity-svg-box svg {
-  width: 28px;
-  height: 28px;
+  width: clamp(18px, 1.6vw, 26px);
+  height: clamp(18px, 1.6vw, 26px);
 }
 
 .amenity-item-title {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: clamp(10px, 0.92vw, 13px);
   font-weight: 600;
   color: var(--text-white);
   letter-spacing: -0.01em;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .amenity-item-sub {
-  font-size: 12px;
+  font-size: clamp(8.5px, 0.8vw, 11px);
   font-weight: 400;
   color: var(--text-dim);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .apple-amenity-item:hover,
@@ -476,15 +519,17 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 .apple-right-column {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: 430px;
+  gap: clamp(8px, 1.4vh, 16px);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 /* Card 1: Connect to Wi-Fi */
 .apple-wifi-card {
   background: var(--glass-card);
   border: 1px solid var(--glass-border);
-  border-radius: var(--radius-card);
+  border-radius: clamp(14px, 1.5vw, 20px);
   box-shadow: 0 28px 64px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   padding: 24px 28px;
   backdrop-filter: blur(48px) saturate(180%);
@@ -505,13 +550,13 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 .wifi-card-header {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
+  gap: clamp(8px, 1vw, 12px);
+  margin-bottom: clamp(6px, 1vh, 12px);
 }
 
 .wifi-header-icon {
-  width: 32px;
-  height: 32px;
+  width: clamp(22px, 2vw, 30px);
+  height: clamp(22px, 2vw, 30px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -520,8 +565,8 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 }
 
 .wifi-header-icon svg {
-  width: 26px;
-  height: 26px;
+  width: clamp(18px, 1.7vw, 24px);
+  height: clamp(18px, 1.7vw, 24px);
 }
 
 .wifi-header-text {
@@ -531,14 +576,14 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 
 .wifi-header-title {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: clamp(13px, 1.15vw, 17px);
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text-white);
 }
 
 .wifi-header-sub {
-  font-size: 12px;
+  font-size: clamp(9.5px, 0.85vw, 12px);
   color: var(--text-dim);
 }
 
@@ -547,13 +592,13 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: clamp(6px, 1vh, 12px);
 }
 
 .wifi-qr-squircle {
   background: #ffffff;
-  padding: 14px;
-  border-radius: 18px;
+  padding: clamp(6px, 0.65vw, 10px);
+  border-radius: clamp(10px, 1vw, 14px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
@@ -561,8 +606,8 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 }
 
 .qr-target-inner {
-  width: 144px;
-  height: 144px;
+  width: clamp(76px, 8.5vw, 114px);
+  height: clamp(76px, 8.5vw, 114px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -570,8 +615,8 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 
 .qr-target-inner img,
 .qr-target-inner canvas {
-  width: 144px !important;
-  height: 144px !important;
+  width: 100% !important;
+  height: 100% !important;
   display: block;
 }
 
@@ -579,23 +624,23 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 .wifi-creds-container {
   background: rgba(18, 20, 24, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 12px 18px;
+  border-radius: clamp(10px, 1vw, 14px);
+  padding: clamp(6px, 0.8vh, 10px) clamp(10px, 1.2vw, 16px);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: clamp(4px, 0.5vh, 7px);
 }
 
 .cred-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 13.5px;
+  gap: clamp(8px, 1vw, 12px);
+  font-size: clamp(10.5px, 0.92vw, 13px);
 }
 
 .cred-icon {
-  width: 18px;
-  height: 18px;
+  width: clamp(14px, 1.2vw, 18px);
+  height: clamp(14px, 1.2vw, 18px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -604,13 +649,13 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 }
 
 .cred-icon svg {
-  width: 16px;
-  height: 16px;
+  width: clamp(13px, 1.1vw, 16px);
+  height: clamp(13px, 1.1vw, 16px);
 }
 
 .cred-label {
   color: var(--text-dim);
-  width: 70px;
+  width: clamp(52px, 4.8vw, 68px);
 }
 
 .cred-value {
@@ -630,9 +675,9 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 .apple-weather-card {
   background: var(--glass-card);
   border: 1px solid var(--glass-border);
-  border-radius: 22px;
+  border-radius: clamp(14px, 1.5vw, 20px);
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  padding: 20px 24px 16px 24px;
+  padding: clamp(8px, 1.2vh, 14px) clamp(12px, 1.4vw, 18px) clamp(6px, 1vh, 12px) clamp(12px, 1.4vw, 18px);
   backdrop-filter: blur(48px) saturate(180%);
   -webkit-backdrop-filter: blur(48px) saturate(180%);
   transition: var(--transition);
@@ -652,23 +697,23 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: clamp(4px, 0.8vh, 8px);
 }
 
 .weather-now-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(8px, 1vw, 12px);
 }
 
 .weather-sun-glyph {
-  font-size: 32px;
+  font-size: clamp(20px, 2.2vw, 28px);
   line-height: 1;
 }
 
-.weather-now-temp {
+.weather-now-temp, .weather-temp-now {
   font-family: var(--font-display);
-  font-size: 34px;
+  font-size: clamp(22px, 2.4vw, 32px);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-white);
@@ -681,7 +726,7 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 }
 
 .weather-now-location {
-  font-size: 13.5px;
+  font-size: clamp(10px, 0.9vw, 12.5px);
   font-weight: 500;
   color: var(--text-sub);
 }
@@ -690,8 +735,8 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
 .weather-forecast-shelf {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 12px 0 10px 0;
+  gap: clamp(4px, 0.6vw, 8px);
+  padding: clamp(6px, 0.7vh, 8px) 0 clamp(4px, 0.6vh, 6px) 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -700,32 +745,32 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
 }
 
 .weather-day-name {
-  font-size: 12px;
+  font-size: clamp(8.5px, 0.8vw, 10.5px);
   color: var(--text-dim);
 }
 
 .weather-day-glyph {
-  font-size: 18px;
-  margin: 2px 0;
+  font-size: clamp(12px, 1.2vw, 16px);
+  margin: 1px 0;
 }
 
 .weather-day-range {
   font-family: var(--font-display);
-  font-size: 12.5px;
+  font-size: clamp(9px, 0.82vw, 11.5px);
   font-weight: 600;
   color: var(--text-white);
   letter-spacing: -0.01em;
 }
 
 .weather-attribution {
-  font-size: 10.5px;
+  font-size: clamp(7.5px, 0.7vw, 9.5px);
   color: var(--text-dim);
   text-align: right;
-  margin-top: 8px;
+  margin-top: clamp(3px, 0.5vh, 5px);
   letter-spacing: 0.02em;
 }
 
@@ -737,31 +782,39 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-top: 16px;
+  padding-top: clamp(6px, 1vh, 12px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   flex-shrink: 0;
+  gap: 12px;
 }
 
 .apple-rules-pills {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: clamp(5px, 0.6vw, 8px);
+  flex-wrap: nowrap;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .apple-rule-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-pill);
-  padding: 6px 14px;
-  font-size: 13px;
+  padding: clamp(3px, 0.5vh, 5px) clamp(7px, 0.8vw, 10px);
+  font-size: clamp(8.5px, 0.8vw, 11px);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   transition: var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .apple-rule-pill:hover {
@@ -773,10 +826,10 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: clamp(16px, 1.4vw, 20px);
+  height: clamp(16px, 1.4vw, 20px);
   border-radius: 50%;
-  font-size: 11px;
+  font-size: clamp(9px, 0.8vw, 11px);
 }
 
 .apple-rule-pill:nth-child(1) .rule-ico,
@@ -800,8 +853,10 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13.5px;
+  font-size: clamp(9.5px, 0.85vw, 12px);
   color: var(--text-sub);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .contact-chat-icon {
@@ -947,7 +1002,7 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
     width: 100vw;
     height: 100vh;
     max-height: 100vh;
-    padding: 18px 40px 14px 40px;
+    padding: var(--tv-safe-y, 28px) var(--tv-safe-x, 64px);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -961,19 +1016,19 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
     flex-shrink: 0;
   }
   .brand-badge {
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: 10px;
   }
   .brand-prop-name {
-    font-size: 17px;
+    font-size: 16px;
   }
   .brand-meta-line {
-    font-size: 11.5px;
+    font-size: 11px;
   }
   .brand-city-tag {
-    font-size: 10.5px;
-    padding: 2px 7px;
+    font-size: 10px;
+    padding: 2px 6px;
   }
   .header-actions-pill {
     padding: 3px 8px;
@@ -988,203 +1043,230 @@ body[data-theme="dark_obsidian"] .tv-backdrop-overlay {
     height: 14px;
   }
   .apple-clock {
-    font-size: 19px;
+    font-size: 18px;
   }
 
-  /* Main Stage */
+  /* Main Stage - Guaranteed never to overflow */
   .apple-main-stage {
     flex: 1;
     min-height: 0;
     display: grid;
-    grid-template-columns: 1fr 310px;
-    gap: 28px;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 20px;
     align-items: center;
-    margin: 6px 0;
+    margin: 4px 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   /* Left Column */
+  .apple-left-column {
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
   .apple-welcome-heading {
-    font-size: 36px;
-    margin-bottom: 6px;
+    font-size: 32px;
+    margin-bottom: 5px;
     line-height: 1.15;
+    word-break: break-word;
   }
   .apple-welcome-sub {
-    font-size: 13.5px;
-    line-height: 1.4;
+    font-size: 13px;
+    line-height: 1.38;
   }
   .apple-host-signoff {
-    font-size: 13.5px;
-    margin-top: 4px;
+    font-size: 13px;
+    margin-top: 3px;
   }
   .greeting-container {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .apple-stay-capsule {
-    padding: 9px 16px;
-    margin-bottom: 14px;
-    gap: 16px;
-    border-radius: 16px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+    gap: 14px;
+    border-radius: 14px;
+    max-width: 100%;
   }
   .capsule-icon-box svg {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
   }
   .capsule-tag-label {
-    font-size: 10.5px;
+    font-size: 10px;
   }
   .capsule-dates-val {
-    font-size: 13px;
+    font-size: 12.5px;
   }
   .capsule-nights-sub {
-    font-size: 10.5px;
+    font-size: 10px;
   }
 
   .apple-amenities-row {
-    gap: 18px;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
   }
   .amenity-svg-box {
-    width: 34px;
-    height: 34px;
-    margin-bottom: 4px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 3px;
   }
   .amenity-svg-box svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
   .amenity-item-title {
-    font-size: 12px;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .amenity-item-sub {
-    font-size: 10.5px;
+    font-size: 9.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* Right Column (Wi-Fi + Weather) */
   .apple-right-column {
-    width: 310px;
-    gap: 10px;
+    width: 280px;
+    gap: 8px;
     flex-shrink: 0;
+    min-width: 0;
   }
 
   .apple-wifi-card {
-    padding: 12px 16px;
-    border-radius: 16px;
+    padding: 10px 14px;
+    border-radius: 14px;
   }
   .wifi-card-header {
-    margin-bottom: 6px;
-    gap: 8px;
+    margin-bottom: 4px;
+    gap: 6px;
   }
   .wifi-header-icon {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
   .wifi-header-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
   .wifi-header-title {
-    font-size: 14.5px;
+    font-size: 13.5px;
   }
   .wifi-header-sub {
-    font-size: 10.5px;
+    font-size: 10px;
   }
 
   .wifi-qr-container {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   .wifi-qr-squircle {
-    padding: 6px;
-    border-radius: 10px;
+    padding: 5px;
+    border-radius: 9px;
   }
   .qr-target-inner {
-    width: 96px;
-    height: 96px;
+    width: 82px;
+    height: 82px;
   }
   .qr-target-inner img,
   .qr-target-inner canvas {
-    width: 96px !important;
-    height: 96px !important;
+    width: 82px !important;
+    height: 82px !important;
   }
 
   .wifi-creds-container {
-    padding: 6px 12px;
-    gap: 4px;
-    border-radius: 10px;
+    padding: 5px 10px;
+    gap: 3px;
+    border-radius: 9px;
   }
   .cred-row {
-    font-size: 11.5px;
-    gap: 8px;
+    font-size: 11px;
+    gap: 6px;
   }
   .cred-icon {
-    width: 14px;
-    height: 14px;
-  }
-  .cred-icon svg {
     width: 13px;
     height: 13px;
   }
+  .cred-icon svg {
+    width: 12px;
+    height: 12px;
+  }
   .cred-label {
-    width: 58px;
+    width: 52px;
   }
 
   /* Weather Card */
   .apple-weather-card {
-    padding: 10px 16px 8px 16px;
-    border-radius: 16px;
+    padding: 8px 14px 6px 14px;
+    border-radius: 14px;
   }
   .weather-current-row {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .weather-sun-glyph {
-    font-size: 22px;
+    font-size: 20px;
   }
   .weather-now-temp, .weather-temp-now {
-    font-size: 26px;
+    font-size: 23px;
   }
   .weather-now-location {
-    font-size: 11.5px;
+    font-size: 10.5px;
   }
   .weather-forecast-shelf {
-    padding: 6px 0 4px 0;
-    gap: 4px;
+    padding: 4px 0 3px 0;
+    gap: 3px;
   }
   .weather-day-item {
-    gap: 2px;
+    gap: 1px;
   }
   .weather-day-name {
-    font-size: 10px;
+    font-size: 9.5px;
   }
   .weather-day-glyph {
-    font-size: 14px;
+    font-size: 13px;
     margin: 0;
   }
   .weather-day-range {
-    font-size: 10.5px;
+    font-size: 9.5px;
   }
   .weather-attribution {
-    font-size: 9px;
-    margin-top: 2px;
+    font-size: 8.5px;
+    margin-top: 1px;
   }
 
   /* Bottom Rules & Contact Footer */
   .apple-bottom-bar {
-    padding-top: 8px;
+    padding-top: 6px;
     flex-shrink: 0;
   }
   .apple-rules-pills {
-    gap: 8px;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow: hidden;
   }
   .apple-rule-pill {
-    padding: 3px 8px;
-    font-size: 10.5px;
-    gap: 5px;
+    padding: 3px 7px;
+    font-size: 10px;
+    gap: 4px;
     border-radius: 9999px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .contact-chat-icon {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
   }
   .contact-prefix, .contact-host-link {
-    font-size: 11px;
+    font-size: 10.5px;
   }
 }

@@ -38,6 +38,7 @@ const API_BASE = (window.location.protocol === 'file:' || !window.location.origi
   : window.location.origin;
 
 document.addEventListener('DOMContentLoaded', () => {
+  initAutoAdjustTV();
   initClock();
   setupWallpaperRotator();
   setupCardsAndAmenities();
@@ -55,6 +56,33 @@ document.addEventListener('DOMContentLoaded', () => {
   startHeartbeat();
   connectLiveSync();
 });
+
+// -------------------------------------------------------------
+// Universal TV Auto-Adjust Engine (Overscan & Resolution Fit)
+// -------------------------------------------------------------
+function initAutoAdjustTV() {
+  function adjust() {
+    const vw = window.innerWidth || document.documentElement.clientWidth;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+
+    // Guaranteed 6.5% horizontal and 5% vertical overscan protection buffer
+    // On 960px: 62px. On 1920px: 125px. Content NEVER touches TV bezel edges.
+    const safeX = Math.max(Math.round(vw * 0.065), 56);
+    const safeY = Math.max(Math.round(vh * 0.05), 26);
+
+    document.documentElement.style.setProperty('--tv-safe-x', `${safeX}px`);
+    document.documentElement.style.setProperty('--tv-safe-y', `${safeY}px`);
+
+    // Calculate scale factor
+    const availW = vw - (safeX * 2);
+    const scale = Math.min(Math.max(availW / 1100, 0.72), 1.25);
+    document.documentElement.style.setProperty('--tv-auto-scale', scale.toFixed(3));
+  }
+
+  adjust();
+  window.addEventListener('resize', adjust);
+  window.addEventListener('orientationchange', adjust);
+}
 
 // -------------------------------------------------------------
 // Auto Wallpaper Rotation (Cycles every 15 seconds)
